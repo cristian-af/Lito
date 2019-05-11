@@ -12,7 +12,7 @@ from discord.ext.commands.cooldowns import BucketType
 class Random(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-        self.reddit = praw.Reddit(client_id="{REDDIT_CLIENT_ID}"),
+        self.reddit = praw.Reddit(client_id="{REDDIT_CLIENT_ID}",
                         client_secret="{REDDIT_CLIENT_SECRET}",
                         user_agent="{REDDIT_USER_AGENT}")
         
