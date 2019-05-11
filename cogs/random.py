@@ -5,7 +5,6 @@ import asyncio
 import os
 import random
 import aiohttp
-import praw
 from datetime import datetime
 from utils.settings import GREEN_EMBED, ERROR_EMOJI
 from discord.ext.commands.cooldowns import BucketType
