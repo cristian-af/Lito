@@ -258,9 +258,9 @@ class Owner(commands.Cog):
         print("")
         print('Logged in as:')
         print('------')
-        print(f'Username: {bot.user.name}')
-        print(f'ID: {bot.user.id}')
-        print(f'Active on: {len(bot.guilds)} Servers.')
+        print(f'Username: {self.bot.user.name}')
+        print(f'ID: {self.bot.user.id}')
+        print(f'Active on: {len(self.bot.guilds)} Servers.')
         print('------')
 
 def setup(bot):
