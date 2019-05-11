@@ -251,7 +251,7 @@ class Owner(commands.Cog):
         await ctx.message.add_reaction(SUCCESS_EMOJI)
 
     @commands.command(pass_context=True, aliases=["clc"])
-    async def clearconsole(self, ctx, count: int):
+    async def clearconsole(self, ctx):
         """Cleans up output from termux."""
         os.system('cls' if os.name == 'nt' else 'clear')
         print("== Console cleared! ==")
