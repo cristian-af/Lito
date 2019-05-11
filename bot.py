@@ -8,7 +8,7 @@ from utils.settings import GREEN_EMBED
 from datetime import datetime
 from discord.ext.commands.cooldowns import BucketType
 
-BOT_PREFIX = "vitotest"
+BOT_PREFIX = "vitotest "
 
 bot = commands.Bot(command_prefix=commands.when_mentioned_or(BOT_PREFIX))
 bot.launch_time = datetime.utcnow()
