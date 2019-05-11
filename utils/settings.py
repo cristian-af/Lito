@@ -9,6 +9,10 @@ CHANNEL2 = 576406400385810452
 
 BOT_TOKEN = ""
 
+REDDIT_CLIENT_ID = ""
+REDDIT_CLIENT_SECRET = ""
+REDDIT_USER_AGENT = ""
+
 from discord import Colour
 GREEN_EMBED = 0x00ea17
 GREY_EMBED = Colour.dark_grey()
