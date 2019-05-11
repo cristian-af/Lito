@@ -13,13 +13,6 @@ class Random(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    def do_dankmeme(self):
-        memes_submissions = self.reddit.subreddit('dankmemes').hot()
-        post_to_pick = random.randint(1, 100)
-        for i in range(0, post_to_pick):
-            submission = next(x for x in memes_submissions if not x.stickied)
-        return submission.url
-
     @commands.command()
     @commands.cooldown(1,5,BucketType.user)
     @commands.guild_only()
