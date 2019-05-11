@@ -148,7 +148,7 @@ class Owner(commands.Cog):
         print(f'ID: {self.bot.user.id}')
         print(f'Active on: {len(self.bot.guilds)} Servers.')
         print('------')
-        subprocess.run(["figlet","Android 5.1"])
+        subprocess.run(["figlet","Android"])
 
 def setup(bot):
     bot.add_cog(Owner(bot))
