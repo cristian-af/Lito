@@ -15,7 +15,7 @@ from platform import python_version
 import copy
 import os
 from utils.settings import OWNERS, GREEN_EMBED, ERROR_EMOJI, SUCCESS_EMOJI, LOADING_EMOJI
-import time
+import time, subprocess
 from typing import Union
 
 class Owner(commands.Cog):
@@ -29,10 +29,6 @@ class Owner(commands.Cog):
 
     async def cog_check(self, ctx):
         return await self.bot.is_owner(ctx.author)
-
-
-
-
 
     @commands.command(name='load', hidden=False)
     @commands.guild_only()
@@ -142,8 +138,8 @@ class Owner(commands.Cog):
 
     @commands.command(pass_context=True, aliases=["clc"])
     async def clearconsole(self, ctx):
-        """Cleans up output from termux."""
-        os.system('cls' if os.name == 'nt' else 'clear')
+        """Cleans up the output from termux."""
+        subprocess.run(["clear"])
         print("== Console cleared! ==")
         print("")
         print('Logged in as:')
@@ -152,6 +148,7 @@ class Owner(commands.Cog):
         print(f'ID: {self.bot.user.id}')
         print(f'Active on: {len(self.bot.guilds)} Servers.')
         print('------')
+        subprocess.run(["figlet","Android 5.1"])
 
 def setup(bot):
     bot.add_cog(Owner(bot))
