@@ -13,6 +13,8 @@ REDDIT_CLIENT_ID = ""
 REDDIT_CLIENT_SECRET = ""
 REDDIT_USER_AGENT = ""
 
+BOT_PREFIX = "vitoandroid "
+
 from discord import Colour
 GREEN_EMBED = 0x00ea17
 GREY_EMBED = Colour.dark_grey()
