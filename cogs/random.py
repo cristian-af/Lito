@@ -16,7 +16,7 @@ class Random(commands.Cog):
                         client_secret="{REDDIT_CLIENT_SECRET}",
                         user_agent="{REDDIT_USER_AGENT}")
         
-        def do_dankmeme(self):
+    def do_dankmeme(self):
         memes_submissions = self.reddit.subreddit('dankmemes').hot()
         post_to_pick = random.randint(1, 100)
         for i in range(0, post_to_pick):
