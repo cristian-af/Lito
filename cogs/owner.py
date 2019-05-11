@@ -183,7 +183,7 @@ class Owner(commands.Cog):
                 embed.timestamp = datetime.datetime.utcnow()
                 await ctx.author.send(embed=embed)
 
-    @commands.command(pass_context=True)
+    @commands.command(pass_context=True, aliases=["clp"])
     async def cleanup(self, ctx, count: int):
         """Cleans up the bot's messages."""
         async for m in ctx.channel.history(limit=count + 1):
@@ -249,6 +249,19 @@ class Owner(commands.Cog):
         """Sets streaming status in silent."""
         await self.bot.change_presence(activity=discord.Streaming(name=activity, url=url))
         await ctx.message.add_reaction(SUCCESS_EMOJI)
+
+    @commands.command(pass_context=True, aliases=["clc"])
+    async def clearconsole(self, ctx, count: int):
+        """Cleans up output from termux."""
+        os.system('cls' if os.name == 'nt' else 'clear')
+        print("== Console cleared! ==")
+        print("")
+        print('Logged in as:')
+        print('------')
+        print(f'Username: {bot.user.name}')
+        print(f'ID: {bot.user.id}')
+        print(f'Active on: {len(bot.guilds)} Servers.')
+        print('------')
 
 def setup(bot):
     bot.add_cog(Owner(bot))
