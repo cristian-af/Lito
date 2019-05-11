@@ -1,2 +1,3 @@
 # Vito-android
-A personal discord.py bot based on hosting on android.
+
+Please note that this is a test to see if a bot can be runned on a 5.1 version android phone.
