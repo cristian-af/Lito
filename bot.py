@@ -7,9 +7,7 @@ import platform, pkg_resources
 from utils.settings import GREEN_EMBED
 from datetime import datetime
 from discord.ext.commands.cooldowns import BucketType
-from utils.settings import BOT_TOKEN
-
-BOT_PREFIX = "vitotest "
+from utils.settings import BOT_TOKEN, BOT_PREFIX
 
 bot = commands.Bot(command_prefix=commands.when_mentioned_or(BOT_PREFIX))
 bot.launch_time = datetime.utcnow()
