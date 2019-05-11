@@ -9,10 +9,6 @@ CHANNEL2 = 576406400385810452
 
 BOT_TOKEN = ""
 
-REDDIT_CLIENT_ID = ""
-REDDIT_CLIENT_SECRET = ""
-REDDIT_USER_AGENT = ""
-
 BOT_PREFIX = "vitoandroid "
 
 from discord import Colour
