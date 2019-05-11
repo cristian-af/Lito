@@ -3,7 +3,7 @@ from discord.ext import commands
 
 import asyncio
 import os
-import platform, psutil, pkg_resources
+import platform, pkg_resources
 from utils.settings import GREEN_EMBED
 from datetime import datetime
 from discord.ext.commands.cooldowns import BucketType
@@ -38,7 +38,7 @@ async def _stats(ctx):
     days, hours = divmod(hours, 24)
     embed = discord.Embed(color=GREEN_EMBED)
     embed.title = "Stats"
-    embed.description = f"Python Version: {platform.python_version()}\n\ndiscord.py version: {pkg_resources.get_distribution('discord.py').version}\n\nUsers: {len(bot.users)}\n\nPing latency: {round(bot.latency * 1000)}ms\n\nOwner: {bot.get_user(339752841612623872)}\n\nUptime: {days}d, {hours}h, {minutes}m, {seconds}s\n\nServers: {len(bot.guilds)}\n\nMemory usage: {psutil.virtual_memory().percent} MB\n\nCPU usage: {psutil.cpu_percent()}%"
+    embed.description = f"Python Version: {platform.python_version()}\n\ndiscord.py version: {pkg_resources.get_distribution('discord.py').version}\n\nUsers: {len(bot.users)}\n\nPing latency: {round(bot.latency * 1000)}ms\n\nOwner: {bot.get_user(339752841612623872)}\n\nUptime: {days}d, {hours}h, {minutes}m, {seconds}s\n\nServers: {len(bot.guilds)}"
     embed.set_footer(text=f"{bot.user.name}")
     embed.set_thumbnail(url=bot.user.avatar_url)
     embed.timestamp = datetime.utcnow()
