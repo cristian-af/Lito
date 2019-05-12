@@ -17,8 +17,6 @@ from utils.settings import BOT_TOKEN, BOT_PREFIX
 bot = commands.Bot(command_prefix=commands.when_mentioned_or(BOT_PREFIX))
 bot.launch_time = datetime.utcnow()
 startup_extensions = ['cogs.owner','cogs.webhook','cogs.random','cogs.eh','jishaku']
-total = 0
-file_amount = 0
 
 @bot.event
 async def on_ready():
@@ -40,8 +38,10 @@ async def on_ready():
 async def _stats(ctx):
     """Shows the stats about the bot."""
     if ctx.author.bot:
-        return                                                    
+        return
     
+    total = 0
+    file_amount = 0
     for path, subdirs, files in os.walk('.'):
        for name in files:
             if name.endswith('.py'):
