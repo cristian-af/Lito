@@ -43,7 +43,7 @@ async def _stats(ctx):
         return                                                    
     
     for path, subdirs, files in os.walk('.'):
-    for name in files:
+       for name in files:
             if name.endswith('.py'):
                 file_amount += 1
                 with codecs.open('./' + str(pathlib.PurePath(path, name)), 'r', 'utf-8') as f:
