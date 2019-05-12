@@ -39,13 +39,14 @@ async def _stats(ctx):
     a1 = "``"
     a2 = "`"
     f = pyfiglet.Figlet(font='slant')
+    f2 = f.renderText('Vito\nAndroid')
     delta_uptime = datetime.utcnow() - bot.launch_time
     hours, remainder = divmod(int(delta_uptime.total_seconds()), 3600)
     minutes, seconds = divmod(remainder, 60)
     days, hours = divmod(hours, 24)
     embed = discord.Embed(color=GREEN_EMBED)
     embed.title = "Stats"
-    embed.description = f"{a1}{a2}{f.renderText('Vito\nAndroid')}{a1}{a2}\n\n\nPython Version: {platform.python_version()}\n\ndiscord.py version: {pkg_resources.get_distribution('discord.py').version}\n\nUsers: {len(bot.users)}\n\nPing latency: {round(bot.latency * 1000)}ms\n\nOwner: {bot.get_user(339752841612623872)}\n\nUptime: {days}d, {hours}h, {minutes}m, {seconds}s\n\nServers: {len(bot.guilds)}"
+    embed.description = f"{a1}{a2}{f2}{a1}{a2}\n\n\nPython Version: {platform.python_version()}\n\ndiscord.py version: {pkg_resources.get_distribution('discord.py').version}\n\nUsers: {len(bot.users)}\n\nPing latency: {round(bot.latency * 1000)}ms\n\nOwner: {bot.get_user(339752841612623872)}\n\nUptime: {days}d, {hours}h, {minutes}m, {seconds}s\n\nServers: {len(bot.guilds)}"
     embed.set_footer(text=f"{bot.user.name}")
     embed.set_thumbnail(url=bot.user.avatar_url)
     embed.timestamp = datetime.utcnow()
