@@ -55,6 +55,7 @@ class Random(commands.Cog):
     @commands.cooldown(1,5,BucketType.user)
     @commands.guild_only()
     async def userinfo(self, ctx, member: discord.Member):
+        """Shows information about the user."""
         if ctx.author.bot:
             return
         
@@ -73,6 +74,7 @@ class Random(commands.Cog):
     @commands.cooldown(1,5,BucketType.user)
     @commands.guild_only()
     async def guildinfo(self, ctx):
+        """Shows information about the server."""
         if ctx.author.bot:
             return
         
