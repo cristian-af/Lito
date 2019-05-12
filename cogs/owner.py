@@ -151,6 +151,7 @@ class Owner(commands.Cog):
         print(f'Cogs loaded: {len(self.bot.cogs)}')
         print('------')
         print(" ")
+        await ctx.message.add_reaction(f"{SUCCESS_EMOJI}")
         
 
 def setup(bot):
