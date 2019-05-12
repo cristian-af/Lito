@@ -4,10 +4,9 @@ from discord.ext import commands
 import asyncio
 import os
 import random
-import praw
 import aiohttp
 from datetime import datetime
-from utils.settings import GREEN_EMBED, ERROR_EMOJI, REDDIT_CLIENT_ID, REDDIT_CLIENT_SECRET, REDDIT_USER_AGENT
+from utils.settings import GREEN_EMBED, ERROR_EMOJI
 from discord.ext.commands.cooldowns import BucketType
 
 class Random(commands.Cog):
