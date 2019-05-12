@@ -139,16 +139,19 @@ class Owner(commands.Cog):
     @commands.command(pass_context=True, aliases=["clc"])
     async def clearconsole(self, ctx):
         """Cleans up the output from termux."""
-        subprocess.run(["clear"])
-        print("== Console cleared! ==")
-        print("")
+        subprocess.run("clear")
+        print("-- Console cleared. --")
+        print(" ")
         print('Logged in as:')
         print('------')
-        print(f'Username: {self.bot.user.name}')
-        print(f'ID: {self.bot.user.id}')
-        print(f'Active on: {len(self.bot.guilds)} Servers.')
+        print(f'Username: {bot.user.name}')
+        print(f'ID: {bot.user.id}')
+        print(f'Active on: {len(bot.guilds)} Servers.')
+        print(f'Users: {len(bot.users)}')
+        print(f'Cogs loaded: {len(bot.cogs)}')
         print('------')
-        subprocess.run(["figlet","Android"])
+        print(" ")
+        subprocess.run(["figlet","Vito\nAndroid"])
 
 def setup(bot):
     bot.add_cog(Owner(bot))
