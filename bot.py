@@ -38,7 +38,7 @@ async def _stats(ctx):
     
     a1 = "``"
     a2 = "`"
-    f = Figlet(font='slant')
+    f = pyfiglet.Figlet(font='slant')
     delta_uptime = datetime.utcnow() - bot.launch_time
     hours, remainder = divmod(int(delta_uptime.total_seconds()), 3600)
     minutes, seconds = divmod(remainder, 60)
