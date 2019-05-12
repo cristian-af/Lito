@@ -59,16 +59,23 @@ class Random(commands.Cog):
         if ctx.author.bot:
             return
         
-        if member is None:
+        if member:
             member = ctx.author
-        
-        embed = discord.Embed(color=GREEN_EMBED)
-        embed.title = f"{member}"
-        embed.description = f"User ID: {member.id}\n\nBot: {member.bot}\n\nJoined: {humanize.naturaldate(member.joined_at)}\n\nCreated: {humanize.naturaldate(member.created_at)}"
-        embed.set_footer(text=self.bot.user.name)
-        embed.set_thumbnail(url=member.avatar_url)
-        embed.timestamp = datetime.utcnow()
-        await ctx.send(embed=embed)
+            embed = discord.Embed(color=GREEN_EMBED)
+            embed.title = f"{member}"
+            embed.description = f"User ID: {member.id}\n\nBot: {member.bot}\n\nJoined: {humanize.naturaldate(member.joined_at)}\n\nCreated: {humanize.naturaldate(member.created_at)}"
+            embed.set_footer(text=self.bot.user.name)
+            embed.set_thumbnail(url=member.avatar_url)
+            embed.timestamp = datetime.utcnow()
+            await ctx.send(embed=embed)
+        else:
+            embed = discord.Embed(color=GREEN_EMBED)
+            embed.title = f"{member}"
+            embed.description = f"User ID: {member.id}\n\nBot: {member.bot}\n\nJoined: {humanize.naturaldate(member.joined_at)}\n\nCreated: {humanize.naturaldate(member.created_at)}"
+            embed.set_footer(text=self.bot.user.name)
+            embed.set_thumbnail(url=member.avatar_url)
+            embed.timestamp = datetime.utcnow()
+            await ctx.send(embed=embed)
 
     @commands.command()
     @commands.cooldown(1,5,BucketType.user)
