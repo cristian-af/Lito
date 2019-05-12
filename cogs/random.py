@@ -58,7 +58,7 @@ class Random(commands.Cog):
         if ctx.author.bot:
             return
         
-        if member = ctx.author:
+        if member == None:
             member = ctx.author
         
         embed = discord.Embed(color=GREEN_EMBED)
