@@ -4,6 +4,11 @@ from discord.ext import commands
 import asyncio
 import os
 import platform, pkg_resources, subprocess, pyfiglet
+
+import codecs
+import os
+import pathlib
+
 from utils.settings import GREEN_EMBED
 from datetime import datetime
 from discord.ext.commands.cooldowns import BucketType
@@ -12,7 +17,8 @@ from utils.settings import BOT_TOKEN, BOT_PREFIX
 bot = commands.Bot(command_prefix=commands.when_mentioned_or(BOT_PREFIX))
 bot.launch_time = datetime.utcnow()
 startup_extensions = ['cogs.owner','cogs.webhook','cogs.random','cogs.eh','jishaku']
-
+total = 0
+file_amount = 0
 
 @bot.event
 async def on_ready():
@@ -36,6 +42,18 @@ async def _stats(ctx):
     if ctx.author.bot:
         return                                                    
     
+    for path, subdirs, files in os.walk('.'):
+    for name in files:
+            if name.endswith('.py'):
+                file_amount += 1
+                with codecs.open('./' + str(pathlib.PurePath(path, name)), 'r', 'utf-8') as f:
+                    for i, l in enumerate(f):
+                        if l.strip().startswith('#') or len(l.strip()) is 0:  # skip commented lines.
+                            pass
+                        else:
+                            total += 1
+
+    
     a1 = "``"
     a2 = "`"
     f = pyfiglet.Figlet(font='slant')
@@ -46,7 +64,7 @@ async def _stats(ctx):
     days, hours = divmod(hours, 24)
     embed = discord.Embed(color=GREEN_EMBED)
     embed.title = "Stats"
-    embed.description = f"{a1}{a2}{f2}{a1}{a2}\nPython Version: {platform.python_version()}\ndiscord.py version: {pkg_resources.get_distribution('discord.py').version}\nUsers: {len(bot.users)}\nPing latency: {round(bot.latency * 1000)}ms\nOwner: {bot.get_user(339752841612623872)}\nUptime: {days}d, {hours}h, {minutes}m, {seconds}s\nServers: {len(bot.guilds)}"
+    embed.description = f"{a1}{a2}{f2}{a1}{a2}\nPython Version: {platform.python_version()}\ndiscord.py version: {pkg_resources.get_distribution('discord.py').version}\nUsers: {len(bot.users)}\nPing latency: {round(bot.latency * 1000)}ms\nOwner: {bot.get_user(339752841612623872)}\nUptime: {days}d, {hours}h, {minutes}m, {seconds}s\nServers: {len(bot.guilds)}\nLine count: {total:,} lines and {file_amount:,} files."
     embed.set_footer(text=f"{bot.user.name}")
     embed.set_thumbnail(url=bot.user.avatar_url)
     embed.timestamp = datetime.utcnow()
