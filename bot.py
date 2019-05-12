@@ -3,7 +3,7 @@ from discord.ext import commands
 
 import asyncio
 import os
-import platform, pkg_resources
+import platform, pkg_resources, subprocess
 from utils.settings import GREEN_EMBED
 from datetime import datetime
 from discord.ext.commands.cooldowns import BucketType
@@ -16,12 +16,17 @@ startup_extensions = ['cogs.owner','cogs.webhook','cogs.random','cogs.eh','jisha
 
 @bot.event
 async def on_ready():
+    print(" ")
     print('Logged in as:')
     print('------')
     print(f'Username: {bot.user.name}')
     print(f'ID: {bot.user.id}')
     print(f'Active on: {len(bot.guilds)} Servers.')
+    print(f'Users: {len(bot.users)}')
+    print(f'Cogs loaded: {len(bot.cogs)}')
     print('------')
+    print(" ")
+    subprocess.run(["figlet","Vito\nAndroid"])
     await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=f"{BOT_PREFIX}help | {len(bot.users)} users."))
 
 @bot.command(name='stats')
