@@ -5,6 +5,7 @@ import asyncio
 import os
 import random
 import aiohttp
+import humanize
 from datetime import datetime
 from utils.settings import GREEN_EMBED, ERROR_EMOJI
 from discord.ext.commands.cooldowns import BucketType
@@ -49,6 +50,40 @@ class Random(commands.Cog):
                     await ctx.send(f"{resp['joke']}")
         except Exception as e:
             await ctx.send(f"{e}")
+
+    @commands.command()
+    @commands.cooldown(1,5,BucketType.user)
+    @commands.guild_only()
+    async def userinfo(self, ctx, member: discord.Member):
+        if ctx.author.bot:
+            return
+        
+        if member = ctx.author:
+            member = ctx.author
+        
+        embed = discord.Embed(color=GREEN_EMBED)
+        embed.title = f"{member}"
+        embed.description = f"User ID: {member.id}\n\nBot: {member.bot}\n\nJoined: {humanize.naturaldate(member.joined_at)}\n\nCreated: {humanize.naturaldate(member.created_at)}"
+        embed.set_footer(text=self.bot.user.name)
+        embed.set_thumbnail(url=member.avatar_url)
+        embed.timestamp = datetime.utcnow()
+        await ctx.send(embed=embed)
+
+    @commands.command()
+    @commands.cooldown(1,5,BucketType.user)
+    @commands.guild_only()
+    async def guildinfo(self, ctx):
+        if ctx.author.bot:
+            return
+        
+        embed = discord.Embed(color=GREEN_EMBED)
+        embed.title = f"{ctx.guild.name} | {ctx.guild.id}"
+        embed.description = f"Owner: {ctx.guild.owner.mention} | ID: {ctx.guild.owner.id}\n\nCreated: {humanize.naturaldate(ctx.guild.created_at)}\n\nIcon URL: [Click here]({ctx.guild.icon_url})" 
+        embed.set_footer(text=self.bot.user.name)
+        embed.set_thumbnail(url=ctx.guild.icon_url)
+        embed.timestamp = datetime.utcnow()
+        await ctx.send(embed=embed)
+
 
 def setup(bot):
     bot.add_cog(Random(bot))
