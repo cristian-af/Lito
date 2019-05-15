@@ -57,7 +57,7 @@ class Bot(commands.Bot):
     @bot.command(name='stats')
     @commands.cooldown(1,5,BucketType.user) 
     async def _stats(ctx):
-    """Shows the stats about the bot."""
+        """Shows the stats about the bot."""
         if ctx.author.bot:
             return
     
