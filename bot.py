@@ -8,59 +8,43 @@ import platform, pkg_resources, subprocess, pyfiglet
 import codecs
 import os
 import pathlib
-import asyncpg
 
 from utils.settings import GREEN_EMBED
 from datetime import datetime
 from discord.ext.commands.cooldowns import BucketType
 from utils.settings import BOT_TOKEN, BOT_PREFIX
+description = "A bot written in Python running on Android."
 
-async def run():
-    description = "A bot written in Python running on Android."
 
-    credentials = {"user": "USERNAME", "password": "PASSWORD", "database": "DATABSE", "host": "127.0.0.1"}
-    db = await asyncpg.create_pool(**credentials)
+bot = commands.Bot(description=description, command_prefix=commands.when_mentioned_or(BOT_PREFIX))
+bot.launch_time = datetime.utcnow()
+startup_extensions = ['cogs.owner','cogs.webhook','cogs.random','cogs.eh','jishaku']
 
-    bot = commands.Bot(description=description, db=db)
-    bot.launch_time = datetime.utcnow()
-    startup_extensions = ['cogs.owner','cogs.webhook','cogs.random','cogs.eh','jishaku']
-    try:
-        await bot.start(BOT_TOKEN)
-    except KeyboardInterrupt:
-        await db.close()
-        await bot.logout()
 
-class Bot(commands.Bot):
-    
-    def __init__(self, **kwargs):
-        super().__init__(
-            description=kwargs.pop("description"),
-            command_prefix=commands.when_mentioned_or(BOT_PREFIX)
-        )
 
-        self.db = kwargs.pop("db")
 
-    async def on_ready(self):
-        print(" ")
-        print('Logged in as:')
-        print('------')
-        print(f'Username: {self.bot.user.name}')
-        print(f'ID: {self.bot.user.id}')
-        print(f'Active on: {len(self.bot.guilds)} Servers.')
-        print(f'Users: {len(self.bot.users)}')
-        print(f'Cogs loaded: {len(self.bot.cogs)}')
-        print('------')
-        print(" ")
-        subprocess.run(["figlet","Vito\nAndroid"])
-        await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=f"{BOT_PREFIX}help | {len(self.bot.users)} users."))
+@bot.event
+async def on_ready():
+    print(" ")
+    print('Logged in as:')
+    print('------')
+    print(f'Username: {self.bot.user.name}')
+    print(f'ID: {self.bot.user.id}')
+    print(f'Active on: {len(self.bot.guilds)} Servers.')
+    print(f'Users: {len(self.bot.users)}')
+    print(f'Cogs loaded: {len(self.bot.cogs)}')
+    print('------')
+    print(" ")
+    subprocess.run(["figlet","Vito\nAndroid"])
+    await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=f"{BOT_PREFIX}help | {len(self.bot.users)} users."))
 
     @bot.command(name='stats')
     @commands.cooldown(1,5,BucketType.user) 
     async def _stats(ctx):
-        """Shows the stats about the bot."""
+    """Shows the stats about the bot."""
         if ctx.author.bot:
             return
-    
+
         total = 0
         file_amount = 0
         for path, subdirs, files in os.walk('.'):
@@ -73,8 +57,7 @@ class Bot(commands.Bot):
                                 pass
                             else:
                                 total += 1
-
-    
+                                
         a1 = "``"
         a2 = "`"
         f = pyfiglet.Figlet(font='slant')
@@ -99,5 +82,4 @@ class Bot(commands.Bot):
                 exc = '{}: {}'.format(type(e).__name__, e)
                 print('Failed to load extension {}\n{}'.format(extension, exc))
 
-loop = asyncio.get_event_loop()
-loop.run_until_complete(run())
+bot.run(BOT_TOKEN)
