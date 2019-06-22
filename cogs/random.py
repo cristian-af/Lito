@@ -39,15 +39,18 @@ class Random(commands.Cog):
         """Says a dad joke."""
         if ctx.author.bot:
             return
-        
+    
         try:
-
             headers = {"Accept": "application/json"}
-
             async with aiohttp.ClientSession() as session:
                 async with session.get('https://icanhazdadjoke.com', headers=headers) as get:
                     resp = await get.json()
-                    await ctx.send(f"{resp['joke']}")
+                    embed = discord.Embed(color=GREEN_EMBED)
+                    embed.title = "Dad Joke"
+                    embed.description = f"{resp['joke']}"
+                    embed.set_footer(text=f"{bot.user.name}")
+                    embed.timestamp = datetime.utcnow()
+                    await ctx.send(embed=embed)
         except Exception as e:
             await ctx.send(f"{e}")
 
