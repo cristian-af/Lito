@@ -54,17 +54,13 @@ async def _stats(ctx):
                         else:
                             total += 1
 
-    a1 = "``"
-    a2 = "`"
-    f = pyfiglet.Figlet(font='slant')
-    f2 = f.renderText('Vito')
     delta_uptime = datetime.utcnow() - bot.launch_time
     hours, remainder = divmod(int(delta_uptime.total_seconds()), 3600)
     minutes, seconds = divmod(remainder, 60)
     days, hours = divmod(hours, 24)
     embed = discord.Embed(color=GREEN_EMBED)
     embed.title = "Stats"
-    embed.description = f"{a1}{a2}{f2}{a1}{a2}\nPython Version: {platform.python_version()}\ndiscord.py version: {pkg_resources.get_distribution('discord.py').version}\nUsers: {len(bot.users)}\nPing latency: {round(bot.latency * 1000)}ms\nOwner: {bot.get_user(339752841612623872)}\nUptime: {days}d, {hours}h, {minutes}m, {seconds}s\nServers: {len(bot.guilds)}\nLine count: {total:,} lines and {file_amount:,} files."
+    embed.description = f"\nPython Version: {platform.python_version()}\ndiscord.py version: {pkg_resources.get_distribution('discord.py').version}\nUsers: {len(bot.users)}\nPing latency: {round(bot.latency * 1000)}ms\nOwner: {bot.get_user(339752841612623872)}\nUptime: {days}d, {hours}h, {minutes}m, {seconds}s\nServers: {len(bot.guilds)}\nLine count: {total:,} lines and {file_amount:,} files."
     embed.set_footer(text=f"{bot.user.name}")
     embed.set_thumbnail(url=bot.user.avatar_url)
     embed.timestamp = datetime.utcnow()
