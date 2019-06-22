@@ -31,7 +31,7 @@ async def on_ready():
     print(f'Cogs loaded: {len(bot.cogs)}')
     print('------')
     print(" ")
-    subprocess.run(["figlet","Vito\nAndroid"])
+    subprocess.run(["figlet","Vito"])
     await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=f"{BOT_PREFIX}help | {len(bot.users)} users."))
 
 @bot.command(name='stats')
