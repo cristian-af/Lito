@@ -41,7 +41,7 @@ async def on_ready():
     @bot.command(name='stats')
     @commands.cooldown(1,5,BucketType.user) 
     async def _stats(ctx):
-    """Shows the stats about the bot."""
+        """Shows the stats about the bot."""
         if ctx.author.bot:
             return
 
@@ -57,7 +57,7 @@ async def on_ready():
                                 pass
                             else:
                                 total += 1
-                                
+
         a1 = "``"
         a2 = "`"
         f = pyfiglet.Figlet(font='slant')
