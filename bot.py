@@ -3,16 +3,13 @@ from discord.ext import commands
 
 import asyncio
 import os
-import platform, pkg_resources, subprocess, pyfiglet
-
+import platform, pkg_resources, subprocess, pyfiglet, psutil
 import codecs
-import os
 import pathlib
 
-from utils.settings import GREEN_EMBED
+from utils.settings import GREEN_EMBED, BOT_TOKEN, BOT_PREFIX
 from datetime import datetime
 from discord.ext.commands.cooldowns import BucketType
-from utils.settings import BOT_TOKEN, BOT_PREFIX
 description = "A test bot written in Python."
 
 bot = commands.Bot(description=description, command_prefix=commands.when_mentioned_or(BOT_PREFIX))
@@ -60,7 +57,7 @@ async def _stats(ctx):
     days, hours = divmod(hours, 24)
     embed = discord.Embed(color=GREEN_EMBED)
     embed.title = "Stats"
-    embed.description = f"\nPython Version: {platform.python_version()}\ndiscord.py version: {pkg_resources.get_distribution('discord.py').version}\nUsers: {len(bot.users)}\nPing latency: {round(bot.latency * 1000)}ms\nOwner: {bot.get_user(339752841612623872)}\nUptime: {days}d, {hours}h, {minutes}m, {seconds}s\nServers: {len(bot.guilds)}\nLine count: {total:,} lines and {file_amount:,} files."
+    embed.description = f"\nPython Version: {platform.python_version()}\ndiscord.py version: {pkg_resources.get_distribution('discord.py').version}\nUsers: {len(bot.users)}\nPing latency: {round(bot.latency * 1000)}ms\nOwner: {bot.get_user(339752841612623872)}\nUptime: {days}d, {hours}h, {minutes}m, {seconds}s\nServers: {len(bot.guilds)}\nLine count: {total:,} lines and {file_amount:,} files.\nCPU Percent: {psutil.cpu_percent()}%\nMemory: {psutil.virtual_memory().percent}MiB"
     embed.set_footer(text=f"{bot.user.name}")
     embed.set_thumbnail(url=bot.user.avatar_url)
     embed.timestamp = datetime.utcnow()
