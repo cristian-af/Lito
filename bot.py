@@ -13,7 +13,7 @@ from utils.settings import GREEN_EMBED
 from datetime import datetime
 from discord.ext.commands.cooldowns import BucketType
 from utils.settings import BOT_TOKEN, BOT_PREFIX
-description = "A bot written in Python running on Android."
+description = "A test bot written in Python."
 
 bot = commands.Bot(description=description, command_prefix=commands.when_mentioned_or(BOT_PREFIX))
 bot.launch_time = datetime.utcnow()
