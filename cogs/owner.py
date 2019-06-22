@@ -138,7 +138,7 @@ class Owner(commands.Cog):
 
     @commands.command(pass_context=True, aliases=["clc"])
     async def clearconsole(self, ctx):
-        """Cleans up the output from termux."""
+        """Cleans up the console."""
         subprocess.run("clear")
         print("-- Console cleared. --")
         print(" ")
