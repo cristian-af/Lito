@@ -36,7 +36,7 @@ async def on_ready():
     print('------')
     print(" ")
     subprocess.run(["figlet","Vito\nAndroid"])
-    await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=f"{BOT_PREFIX}help | {len(self.bot.users)} users."))
+    await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=f"{BOT_PREFIX}help | {len(bot.users)} users."))
 
     @bot.command(name='stats')
     @commands.cooldown(1,5,BucketType.user) 
