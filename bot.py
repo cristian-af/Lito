@@ -29,7 +29,7 @@ async def on_ready():
     print('Logged in as:')
     print('------')
     print(f'Username: {bot.user.name}')
-    print(f'ID: {self.bot.user.id}')
+    print(f'ID: {bot.user.id}')
     print(f'Active on: {len(bot.guilds)} Servers.')
     print(f'Users: {len(bot.users)}')
     print(f'Cogs loaded: {len(bot.cogs)}')
