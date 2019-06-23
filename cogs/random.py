@@ -86,6 +86,19 @@ class Random(commands.Cog):
         embed.timestamp = datetime.utcnow()
         await ctx.send(embed=embed)
 
+    @commands.command()
+    @commands.cooldown(1,5,BucketType.user)
+    @commands.guild_only()
+    async def feedback(self, ctx, text: str)
+        """A command that sends feedback."""
+        embed = discord.Embed(color=GREEN_EMBED)
+        embed.title = "Feedback"
+        embed.description = f"A user named `{ctx.author.name}` sent a feedback that says:\n\n{text}"
+        embed.set_footer(text=self.bot.user.name)
+        embed.set_thumbnail(url=ctx.author.avatar_url)
+        embed.timestamp = datetime.utcnow()
+        await self.bot.get_channel(592424825675579412).send(embed=embed)
+        await ctx.send(f"Thank you for your feedback, {ctx.author.name}. :ok_hand:")
 
 def setup(bot):
     bot.add_cog(Random(bot))
