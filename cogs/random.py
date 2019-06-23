@@ -89,7 +89,7 @@ class Random(commands.Cog):
     @commands.command()
     @commands.cooldown(1,5,BucketType.user)
     @commands.guild_only()
-    async def feedback(self, ctx, *text: str):
+    async def feedback(self, ctx, *, text: str):
         """A command that sends feedback."""
         embed = discord.Embed(color=GREEN_EMBED)
         embed.title = "Feedback"
