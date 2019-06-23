@@ -87,7 +87,7 @@ class Random(commands.Cog):
         await ctx.send(embed=embed)
 
     @commands.command()
-    @commands.cooldown(1,60,BucketType.server)
+    @commands.cooldown(1,60,BucketType.guild)
     @commands.guild_only()
     async def feedback(self, ctx, *, text: str):
         """A command that sends feedback."""
