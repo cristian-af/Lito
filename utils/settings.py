@@ -11,4 +11,4 @@ BOT_TOKEN = ""
 BOT_PREFIX = "lito "
 
 from discord import Colour
-GREEN_EMBED = 0x00ea17
+GREEN_EMBED = 0x3a4eff
