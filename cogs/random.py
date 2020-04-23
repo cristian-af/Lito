@@ -46,7 +46,7 @@ class Random(commands.Cog):
                 async with session.get('https://icanhazdadjoke.com', headers=headers) as get:
                     resp = await get.json()
                     embed = discord.Embed(color=GREEN_EMBED)
-                    embed.title = "Dad Joke"
+                    embed.title = "A dad joke."
                     embed.description = f"{resp['joke']}"
                     embed.set_footer(text=f"{self.bot.user.name}")
                     embed.timestamp = datetime.utcnow()
