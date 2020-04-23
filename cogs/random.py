@@ -8,6 +8,7 @@ import aiohttp
 import humanize
 from datetime import datetime
 from utils.settings import GREEN_EMBED, ERROR_EMOJI
+import utils.checks
 from discord.ext.commands.cooldowns import BucketType
 
 class Random(commands.Cog):
@@ -17,6 +18,7 @@ class Random(commands.Cog):
 
     @commands.command()
     @commands.cooldown(1,5,BucketType.user)
+    @commands.check(utils.checks.is_bot)
     @commands.guild_only()
     async def random(self, ctx):
         """Chooses a random user."""
@@ -35,6 +37,7 @@ class Random(commands.Cog):
     @commands.command()
     @commands.cooldown(1,5,BucketType.user)
     @commands.guild_only()
+    @commands.check(utils.checks.is_bot)
     async def dadjoke(self, ctx):
         """Says a dad joke."""
         if ctx.author.bot:
@@ -57,6 +60,7 @@ class Random(commands.Cog):
     @commands.command()
     @commands.cooldown(1,5,BucketType.user)
     @commands.guild_only()
+    @commands.check(utils.checks.is_bot)
     async def userinfo(self, ctx, member: discord.Member):
         """Shows information about the user."""
         if ctx.author.bot:
@@ -73,6 +77,7 @@ class Random(commands.Cog):
     @commands.command()
     @commands.cooldown(1,5,BucketType.user)
     @commands.guild_only()
+    @commands.check(utils.checks.is_bot)
     async def guildinfo(self, ctx):
         """Shows information about the server."""
         if ctx.author.bot:
@@ -89,6 +94,7 @@ class Random(commands.Cog):
     @commands.command()
     @commands.cooldown(1,60,BucketType.guild)
     @commands.guild_only()
+    @commands.check(utils.checks.is_bot)
     async def feedback(self, ctx, *, text: str):
         """A command that sends feedback."""
         embed = discord.Embed(color=GREEN_EMBED)
