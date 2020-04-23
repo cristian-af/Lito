@@ -26,7 +26,7 @@ class Random(commands.Cog):
         user = random.choice(ctx.guild.members)
         embed = discord.Embed(color=GREEN_EMBED)
         embed.title = "Random Member"
-        embed.description = f"User: {self.bot.get_user(user.id)}\n\nUser ID: {user.id}\n\nBot: {user.bot}\n\nJoined At: {user.joined_at}"
+        embed.description = f"User: {self.bot.get_user(user.id)}\nUser ID: {user.id}\nBot: {user.bot}\nJoined At: {user.joined_at}"
         embed.set_footer(text=f"{self.bot.user.name}")
         embed.set_thumbnail(url=user.avatar_url)
         embed.timestamp = datetime.utcnow()
@@ -64,7 +64,7 @@ class Random(commands.Cog):
         
         embed = discord.Embed(color=GREEN_EMBED)
         embed.title = f"{member}"
-        embed.description = f"User ID: {member.id}\n\nBot: {member.bot}\n\nJoined: {humanize.naturaldate(member.joined_at)}\n\nCreated: {humanize.naturaldate(member.created_at)}"
+        embed.description = f"User ID: {member.id}\nBot: {member.bot}\nJoined: {humanize.naturaldate(member.joined_at)}\nCreated: {humanize.naturaldate(member.created_at)}"
         embed.set_footer(text=self.bot.user.name)
         embed.set_thumbnail(url=member.avatar_url)
         embed.timestamp = datetime.utcnow()
@@ -80,7 +80,7 @@ class Random(commands.Cog):
         
         embed = discord.Embed(color=GREEN_EMBED)
         embed.title = f"{ctx.guild.name} | {ctx.guild.id}"
-        embed.description = f"Owner: {ctx.guild.owner.mention} | ID: {ctx.guild.owner.id}\n\nCreated: {humanize.naturaldate(ctx.guild.created_at)}\n\nIcon URL: [Click here]({ctx.guild.icon_url})" 
+        embed.description = f"Owner: {ctx.guild.owner.mention} | ID: {ctx.guild.owner.id}\nCreated: {humanize.naturaldate(ctx.guild.created_at)}\nIcon URL: [Click here]({ctx.guild.icon_url})" 
         embed.set_footer(text=self.bot.user.name)
         embed.set_thumbnail(url=ctx.guild.icon_url)
         embed.timestamp = datetime.utcnow()
