@@ -33,7 +33,7 @@ class Owner(commands.Cog):
     async def _load(self, ctx, *, extension_name):
         """Loads a module."""
         try:
-            wait = await ctx.send(f"<{LOADING_EMOJI}> **`Wait for result.`**")
+            wait = await ctx.send(f"<{LOADING_EMOJI}> Wait for some results.")
             await asyncio.sleep(1)
             await wait.delete()
             self.bot.load_extension(extension_name)
@@ -48,7 +48,7 @@ class Owner(commands.Cog):
     async def _unload(self, ctx, *, extension_name):
         """Unloads a module."""
         try:
-            wait = await ctx.send(f"**`Wait for result.`**")
+            wait = await ctx.send(f"Wait for some results.")
             await asyncio.sleep(1)
             await wait.delete()
             self.bot.unload_extension(extension_name)
@@ -63,7 +63,7 @@ class Owner(commands.Cog):
     async def _reload(self, ctx, *, extension_name):
         """Reloads a module."""
         try:
-            wait = await ctx.send(f"<{LOADING_EMOJI}> **`Wait for result.`**")
+            wait = await ctx.send(f"<{LOADING_EMOJI}> Wait for some results.")
             await asyncio.sleep(1)
             await wait.delete()
             self.bot.unload_extension(extension_name)
