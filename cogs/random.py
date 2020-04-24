@@ -105,6 +105,32 @@ class Random(commands.Cog):
         embed.timestamp = datetime.utcnow()
         await self.bot.get_channel(592424825675579412).send(embed=embed)
         await ctx.send(f"Thank you for your feedback, {ctx.author.name}. :ok_hand:")
+    
+    @commands.command()
+    @commands.guild_only()
+    @commands.check(utils.checks.is_bot)
+    @commands.cooldown(1.0, 30.0, commands.BucketType.user)
+    async def hownonce(self, ctx, user: discord.Member = None):
+        """How much of an nonce he is?"""
+        if user is None:
+            user = ctx.author
+            random.seed(user.id)
+            percent = random.randint(0, 100)
+            embed = discord.Embed(color=GREEN_EMBED)
+            embed.title = "How much of a nonce are you?"
+            embed.description = f"You are {percent}% nonce."
+            embed.set_footer(text=f"{self.bot.user.name}")
+            embed.timestamp = datetime.utcnow()
+            await ctx.send(embed=embed)
+        else:
+            random.seed(user.id)
+            percent = random.randint(0, 100)
+            embed = discord.Embed(color=GREEN_EMBED)
+            embed.title = f"How much of an nonce is {user.name}?"
+            embed.description = f"{user.mention} is {percent}% nonce."
+            embed.set_footer(text=f"{self.bot.user.name}")
+            embed.timestamp = datetime.utcnow()
+            await ctx.send(embed=embed)
 
 def setup(bot):
     bot.add_cog(Random(bot))
