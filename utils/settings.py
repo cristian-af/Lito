@@ -12,4 +12,7 @@ BOT_TOKEN = ""
 BOT_PREFIX = "lito "
 
 from discord import Colour
-GREEN_EMBED = 0x3a4eff
+GREEN_EMBED2 = 0x3a4eff
+GREEN_EMBED = 0x36393E
+GREEN_EMBED = 3553598
+GREEN_EMBED = discord.Colour.from_rgb(54, 57, 62)
