@@ -17,11 +17,10 @@ bot = commands.Bot(description=description, command_prefix=commands.when_mention
 bot.launch_time = datetime.utcnow()
 startup_extensions = ['cogs.owner','cogs.webhook','cogs.random','cogs.eh','jishaku']
 
-conn = await SQL.connect('androiddatabase/test.db')
-c = await conn.cursor()
-
 @bot.event
 async def on_ready():
+    conn = await SQL.connect('androiddatabase/test.db')
+    c = await conn.cursor()
     print(" ")
     print('Logged in as:')
     print('------')
