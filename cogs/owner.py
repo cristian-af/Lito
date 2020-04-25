@@ -26,25 +26,14 @@ class Owner(commands.Cog):
         self._last_result = None
         self.sessions = set()
         self.blocked = []
-            
-    def cleanup_code(self, content):
-        """Automatically removes code blocks from the code."""
-        # remove ```py\n```
-        if content.startswith('```') and content.endswith('```'):
-            return '\n'.join(content.split('\n')[1:-1])
-
-        # remove `foo`
-        return content.strip('` \n')
-
-
 
     @commands.command(name='load', hidden=False)
     @commands.guild_only()
     @commands.is_owner()
     async def _load(self, ctx, *, extension_name):
-        """Unloads a module."""
+        """Loads a module."""
         try:
-            wait = await ctx.send(f"Wait for some results.")
+            wait = await ctx.send(f"<{LOADING_EMOJI}> Wait for some results.")
             await asyncio.sleep(1)
             await wait.delete()
             self.bot.load_extension(extension_name)
