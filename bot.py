@@ -6,6 +6,7 @@ import os
 import platform, pkg_resources, subprocess, pyfiglet, psutil
 import codecs
 import pathlib
+import SQL
 
 from utils.settings import GREEN_EMBED, BOT_TOKEN, BOT_PREFIX
 from datetime import datetime
@@ -15,6 +16,9 @@ description = "A test bot written in Python."
 bot = commands.Bot(description=description, command_prefix=commands.when_mentioned_or(BOT_PREFIX))
 bot.launch_time = datetime.utcnow()
 startup_extensions = ['cogs.owner','cogs.webhook','cogs.random','cogs.eh','jishaku']
+
+conn = await SQL.connect('androiddatabase/test.db')
+c = await conn.cursor()
 
 @bot.event
 async def on_ready():
@@ -62,7 +66,17 @@ async def _stats(ctx):
     embed.set_thumbnail(url=bot.user.avatar_url)
     embed.timestamp = datetime.utcnow()
     await ctx.send(embed=embed)                                                         
-                                                        
+
+
+@bot.command(name='closedb')
+@commands.is_owner()
+@commands.cooldown(1,5,BucketType.user) 
+async def _closedb(ctx):
+   """Closes the database."""
+   await conn.close()
+   await ctx.send("Done!")
+   
+    
 if __name__ == "__main__":
     for extension in startup_extensions:
         try:
