@@ -138,7 +138,7 @@ class Random(commands.Cog):
     @commands.check(utils.checks.is_bot)
     async def takethenoose(self, ctx, *, text: str):
         """Just take the noose."""
-        await ctx.send("aight.")a
+        await ctx.send("aight.")
 
 def setup(bot):
     bot.add_cog(Random(bot))
