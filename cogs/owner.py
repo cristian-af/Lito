@@ -32,7 +32,7 @@ class Owner(commands.Cog):
     @commands.guild_only()
     @commands.is_owner()
     async def _load(self, ctx, *, extension_name):
-        """Loads a module."""
+        """Loads a module.."""
         try:
             wait = await ctx.send(f"<{LOADING_EMOJI}> Wait for some results.")
             await asyncio.sleep(1)
