@@ -6,7 +6,6 @@ import os
 import platform, pkg_resources, subprocess, pyfiglet, psutil
 import codecs
 import pathlib
-import SQL
 
 from utils.settings import GREEN_EMBED, BOT_TOKEN, BOT_PREFIX
 from datetime import datetime
@@ -19,8 +18,6 @@ startup_extensions = ['cogs.owner','cogs.webhook','cogs.random','cogs.eh','jisha
 
 @bot.event
 async def on_ready():
-    conn = await SQL.connect('database/test.db')
-    c = await conn.cursor()
     print(" ")
     print('Logged in as:')
     print('------')
@@ -65,17 +62,7 @@ async def _stats(ctx):
     embed.set_thumbnail(url=bot.user.avatar_url)
     embed.timestamp = datetime.utcnow()
     await ctx.send(embed=embed)                                                         
-
-
-@bot.command(name='closedb')
-@commands.is_owner()
-@commands.cooldown(1,5,BucketType.user) 
-async def _closedb(ctx):
-   """Closes the database."""
-   await conn.close()
-   await ctx.send("Done!")
-   
-    
+     
 if __name__ == "__main__":
     for extension in startup_extensions:
         try:
