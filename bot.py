@@ -19,7 +19,7 @@ startup_extensions = ['cogs.owner','cogs.webhook','cogs.random','cogs.eh','jisha
 
 @bot.event
 async def on_ready():
-    conn = await SQL.connect('./androiddatabase/test.db')
+    conn = await SQL.connect('database/test.db')
     c = await conn.cursor()
     print(" ")
     print('Logged in as:')
