@@ -27,10 +27,7 @@ class Owner(commands.Cog):
         self._last_result = None
         self.sessions = set()
         self.blocked = []
-    
-    conn = await SQL.connect('database/test.db')
-    c = await conn.cursor()
-        
+            
     @commands.command(name='load', hidden=False)
     @commands.guild_only()
     @commands.is_owner()
