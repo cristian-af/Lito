@@ -131,7 +131,7 @@ class Owner(commands.Cog):
         print(" ")
         await ctx.message.add_reaction(f"{SUCCESS_EMOJI}")
         
-   @bot.command(name='sql')
+   @commands.command(name='sql', hidden=False)
    @commands.is_owner()
    @commands.cooldown(1,5,BucketType.user) 
    async def _sql(ctx, *, text: str):
