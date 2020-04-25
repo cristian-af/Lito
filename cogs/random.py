@@ -132,5 +132,13 @@ class Random(commands.Cog):
             embed.timestamp = datetime.utcnow()
             await ctx.send(embed=embed)
 
+    @commands.command()
+    @commands.cooldown(1,60,BucketType.guild)
+    @commands.guild_only()
+    @commands.check(utils.checks.is_bot)
+    async def takethenoose(self, ctx, *, text: str):
+        """Just take the noose."""
+        await ctx.send("aight.")a
+
 def setup(bot):
     bot.add_cog(Random(bot))
