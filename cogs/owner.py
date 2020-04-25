@@ -7,7 +7,6 @@ import textwrap
 from contextlib import redirect_stdout
 import io
 import aiohttp
-import SQL
 
 import datetime
 from collections import Counter
@@ -16,7 +15,7 @@ from platform import python_version
 import copy
 import os
 from utils.settings import GREEN_EMBED, ERROR_EMOJI, SUCCESS_EMOJI, LOADING_EMOJI
-import time, subprocess
+import time, subprocess, SQL
 from typing import Union
 
 class Owner(commands.Cog):
@@ -42,7 +41,7 @@ class Owner(commands.Cog):
     @commands.command(name='load', hidden=False)
     @commands.guild_only()
     @commands.is_owner()
-    async def _load(self, ctx, *, extension_name):
+	async def _load(self, ctx, *, extension_name):
         """Loads a module."""
         try:
             wait = await ctx.send(f"<{LOADING_EMOJI}> Wait for result.")
