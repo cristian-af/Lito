@@ -131,16 +131,15 @@ class Owner(commands.Cog):
         print(" ")
         await ctx.message.add_reaction(f"{SUCCESS_EMOJI}")
         
-   @commands.command(name='sql', hidden=False)
-   @commands.is_owner()
-   @commands.cooldown(1,5,BucketType.user) 
-   async def _sql(ctx, *, text: str):
-      """Executes some SQL."""
-      conn = await SQL.connect('database/test.db')
-      c = await conn.cursor()
-      await c.execute(text)
-      await ctx.send("Done!")
-        
+    @commands.command(name='sql', hidden=False)
+    @commands.is_owner()
+    @commands.cooldown(1,5,BucketType.user) 
+    async def _sql(ctx, *, text: str):
+       """Executes some SQL."""
+       conn = await SQL.connect('database/test.db')
+       c = await conn.cursor()
+       await c.execute(text)
+       await ctx.send("Done!")
 
 def setup(bot):
     bot.add_cog(Owner(bot))
