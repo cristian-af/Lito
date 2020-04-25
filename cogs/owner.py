@@ -7,6 +7,7 @@ import textwrap
 from contextlib import redirect_stdout
 import io
 import aiohttp
+import SQL
 
 import datetime
 from collections import Counter
@@ -26,7 +27,10 @@ class Owner(commands.Cog):
         self._last_result = None
         self.sessions = set()
         self.blocked = []
-
+    
+    conn = await SQL.connect('database/test.db')
+    c = await conn.cursor()
+        
     @commands.command(name='load', hidden=False)
     @commands.guild_only()
     @commands.is_owner()
@@ -130,6 +134,16 @@ class Owner(commands.Cog):
         print('------')
         print(" ")
         await ctx.message.add_reaction(f"{SUCCESS_EMOJI}")
+        
+   @bot.command(name='sql')
+   @commands.is_owner()
+   @commands.cooldown(1,5,BucketType.user) 
+   async def _sql(ctx, *, text: str):
+      """Executes some SQL."""
+      conn = await SQL.connect('database/test.db')
+      c = await conn.cursor()
+      await c.execute(text)
+      await ctx.send("Done!")
         
 
 def setup(bot):
