@@ -61,14 +61,19 @@ class Random(commands.Cog):
         status = member.status
         if status is "online":
             status = f"{status} - <:status_online:596576749790429200>"
+            pass
         if status is "idle":
             status = f"{status} - <:status_idle:596576773488115722>"
+            pass
         if status is "dnd":
             status = f"{status} -  <:status_dnd:596576774364856321>"
+            pass
         if status is "offline":
             status = f"{status} - <:status_offline:596576752013279242> "
+            pass
         if status is "streaming":
             status = f"{status} - <:status_streaming:596576747294818305>"
+            pass
         
         embed = discord.Embed(color=GREEN_EMBED)
         embed.title = f"{member}"
