@@ -60,7 +60,7 @@ class CommandErrorHandler(commands.Cog):
         
         elif isinstance(error, commands.CommandOnCooldown):
             embed = discord.Embed(color=GREEN_EMBED)
-            embed.description = f"<{ERROR_EMOJI}> Try again after {humanize.naturaldelta(datetime.timedelta(seconds=commands.CommandOnCooldown.cooldown))}."
+            embed.description = f"<{ERROR_EMOJI}> Try again after {humanize.naturaldelta(datetime.timedelta(seconds=error.cooldown))}."
             return await ctx.send(embed=embed)
         
         elif isinstance(error, commands.NotOwner):
