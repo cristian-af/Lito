@@ -102,7 +102,7 @@ class Random(commands.Cog):
     @commands.command()
     @commands.guild_only()
     @commands.check(utils.checks.is_bot)
-    @commands.cooldown(1.0, 30.0, commands.BucketType.user)
+    @commands.cooldown(2.0, 5, commands.BucketType.user)
     async def hownonce(self, ctx, user: discord.Member = None):
         """How much of an nonce he is?"""
         if user is None:
