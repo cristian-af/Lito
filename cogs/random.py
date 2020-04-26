@@ -77,11 +77,10 @@ class Random(commands.Cog):
         """Shows information about the server. 5 second cooldown."""
         
         embed = discord.Embed(color=GREEN_EMBED)
-        embed.title = f"{ctx.guild.name} | {ctx.guild.id}"
-        embed.description = f"Owner: {ctx.guild.owner.mention} | ID: {ctx.guild.owner.id}\nCreated: {humanize.naturaldate(ctx.guild.created_at)}\nIcon URL: [Click here]({ctx.guild.icon_url})" 
-        embed.set_footer(text=self.bot.user.name)
+        embed.title = f"{ctx.guild.name}"
+        embed.description = f"Users: {len(ctx.guild.members)}\nID: {ctx.guild.id}\nCreated: {humanize.naturaldate(ctx.guild.created_at)}\nIcon URL: [Click here]({ctx.guild.icon_url})\nBoosts & Tier: {ctx.guild.premium_subscription_count} - Tier {ctx.guild.premium_tier}" 
+        embed.set_footer(text=f"{ctx.guild.owner} | {ctx.guild.owner.id}")
         embed.set_thumbnail(url=ctx.guild.icon_url)
-        embed.timestamp = datetime.utcnow()
         await ctx.send(embed=embed)
 
     @commands.command()
@@ -104,7 +103,7 @@ class Random(commands.Cog):
     @commands.check(utils.checks.is_bot)
     @commands.cooldown(4.0, 2, commands.BucketType.user)
     async def hownonce(self, ctx, user: discord.Member = None):
-        """How much of an nonce he is? 2 second cooldown with 4 tries until cooldown."""
+        """How much of an nonce he is? 2 second cooldown with 4 tries."""
         if user is None:
             user = ctx.author
             random.seed(user.id)
