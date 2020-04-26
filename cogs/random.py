@@ -23,7 +23,8 @@ class Random(commands.Cog):
     async def random(self, ctx):
         """Chooses a random user. 5 second cooldown."""
         
-        user = random.choice(ctx.guild.members)
+        user1 = random.choice(ctx.guild.members)
+        user = self.bot.get_user(user1.id)
         embed = discord.Embed(color=GREEN_EMBED)
         embed.title = user
         embed.description = f"User ID: {user.id}\nBot: {user.bot}\nJoined At: {humanize.naturaldate(user.joined_at)}\nStatus: {user.status}\n```{user.activity}```"
