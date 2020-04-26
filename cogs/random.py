@@ -136,7 +136,7 @@ class Random(commands.Cog):
     @commands.cooldown(1,60,BucketType.guild)
     @commands.guild_only()
     @commands.check(utils.checks.is_bot)
-    async def takethenoose(self, ctx, *, text: str):
+    async def takethenoose(self, ctx):
         """Just take the noose."""
         await ctx.send("aight.")
 
