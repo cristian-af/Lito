@@ -4,7 +4,7 @@ from discord.ext import commands
 from utils.settings import GREEN_EMBED, ERROR_EMOJI
 import discord
 import humanize
-from datetime import datetime
+import datetime
 
 
 
