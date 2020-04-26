@@ -91,12 +91,16 @@ class Random(commands.Cog):
         """A command that sends feedback. 35 second cooldown per guild."""
         embed = discord.Embed(color=GREEN_EMBED)
         embed.title = "Feedback"
-        embed.description = f"A user named `{ctx.author.name}` sent a feedback that says:\n\n{text}"
+        embed.description = f"A user named `{ctx.author}` from `{ctx.guild}` sent a feedback that says:\n\n```{text}```"
         embed.set_footer(text=self.bot.user.name)
         embed.set_thumbnail(url=ctx.author.avatar_url)
         embed.timestamp = datetime.utcnow()
         await self.bot.get_channel(592424825675579412).send(embed=embed)
-        await ctx.send(f"Thank you for your feedback, {ctx.author.name}. :ok_hand:")
+        response = discord.Embed(color=GREEN_EMBED)
+        response.title = "Thank you!"
+        response.description = "I highly appreciate the feedback that is sent to make a suggestion or a bug report or just feedback on how good the bot is! Thank you!"
+        response.set_footer(text=self.bot.user.name)                           
+        await ctx.send(embed=response)
     
     @commands.command()
     @commands.guild_only()
