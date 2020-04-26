@@ -58,9 +58,9 @@ class CommandErrorHandler(commands.Cog):
             embed.description = f"<{ERROR_EMOJI}> There was a error that is unexpected, please report this to the owner. (c_ristian#0126)\n\n`{error}`"
             return await ctx.send(embed=embed)
         
-        elif isinstance(error, commands.CommandOnCooldown):
+        elif isinstance(error, commands.CommandOnCooldown, bucket):
             embed = discord.Embed(color=GREEN_EMBED)
-            embed.description = f"<{ERROR_EMOJI}> Try again after {humanize.naturaldelta(datetime.timedelta(seconds=error.cooldown))}."
+            embed.description = f"<{ERROR_EMOJI}> Try again after {humanize.naturaldelta(datetime.timedelta(seconds=bucket))}."
             return await ctx.send(embed=embed)
         
         elif isinstance(error, commands.NotOwner):
