@@ -59,15 +59,15 @@ class Random(commands.Cog):
     async def userinfo(self, ctx, member: discord.Member):
         """Shows information about the user."""
         status = member.status
-        if member.status == "online":
+        if member.status = "online":
             status = f"{status} - <:status_online:596576749790429200>"
-        if member.status == "idle":
+        if member.status = "idle":
             status = f"{status} - <:status_idle:596576773488115722>"
-        if member.status == "dnd":
+        if member.status = "dnd":
             status = f"{status} -  <:status_dnd:596576774364856321>"
-        if member.status == "offline":
+        if member.status = "offline":
             status = f"{status} - <:status_offline:596576752013279242> "
-        if member.status == "streaming":
+        if member.status = "streaming":
             status = f"{status} - <:status_streaming:596576747294818305>"
         
         embed = discord.Embed(color=GREEN_EMBED)
