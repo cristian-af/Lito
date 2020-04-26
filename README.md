@@ -1,6 +1,6 @@
 # Lito
 
-Hi there! I am a personal bot on an android that has linux installed on it and this bot will be in future testing things until Vito comes 100% self-hosted, there will be tests here so nothing intresting here! You can check vito here, https://github.com/Cristy86/Vito
+Hi there! I am a personal bot on an android that runs on Termux which is a app on android. There is also Vito! You can check vito here, https://github.com/Cristy86/Vito
 
 # Notice
 
