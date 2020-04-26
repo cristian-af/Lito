@@ -56,8 +56,11 @@ class Random(commands.Cog):
     @commands.cooldown(1,5,BucketType.user)
     @commands.guild_only()
     @commands.check(utils.checks.is_bot)
-    async def userinfo(self, ctx, member: discord.Member):
+    async def userinfo(self, ctx, member: discord.Member = None):
         """Shows information about the user."""
+        if member is None:
+            member = ctx.author
+        
         embed = discord.Embed(color=GREEN_EMBED)
         embed.title = f"{member}"
         embed.description = f"Status: {member.status}\nUser ID: ``{member.id}``\nBot: {member.bot}\nJoined: {humanize.naturaldate(member.joined_at)}\nCreated: {humanize.naturaldate(member.created_at)}\n```{member.activity}```"
