@@ -25,7 +25,7 @@ class Random(commands.Cog):
         
         user = random.choice(ctx.guild.members)
         embed = discord.Embed(color=GREEN_EMBED)
-        embed.title = self.bot.get_user(user)
+        embed.title = user
         embed.description = f"User ID: {user.id}\nBot: {user.bot}\nJoined At: {humanize.naturaldate(user.joined_at)}\nStatus: {user.status}\n```{user.activity}```"
         embed.set_footer(text=self.bot.user.name)
         embed.set_thumbnail(url=user.avatar_url)
