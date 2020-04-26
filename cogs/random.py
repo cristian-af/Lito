@@ -59,7 +59,8 @@ class Random(commands.Cog):
     async def userinfo(self, ctx, member: discord.Member):
         """Shows information about the user."""
         status = member.status
-        if status is status.online:
+        
+        if status == "online" or "<Status.online: 'online'>":
             status = f"{status} - <:status_online:596576749790429200>"
             pass
         if status is status.idle:
