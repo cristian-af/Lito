@@ -3,6 +3,8 @@ import sys
 from discord.ext import commands
 from utils.settings import GREEN_EMBED, ERROR_EMOJI
 import discord
+import humanize
+from datetime import datetime
 
 
 
@@ -58,7 +60,7 @@ class CommandErrorHandler(commands.Cog):
         
         elif isinstance(error, commands.CommandOnCooldown):
             embed = discord.Embed(color=GREEN_EMBED)
-            embed.description = f"<{ERROR_EMOJI}> {error}.\n\nHold it right there. Did you get a long cooldown? If so, you might be confused but..\nYou can just convert the seconds..\n[Convert seconds to minutes.](https://www.checkyourmath.com/convert/time/seconds_minutes.php)\n[Convert seconds to hours.](https://www.checkyourmath.com/convert/time/seconds_hours.php)"
+            embed.description = f"<{ERROR_EMOJI}> Try again after {humanize.naturaldelta(datetime.timedelta(seconds=commands.CommandOnCooldown.cooldown))}."
             return await ctx.send(embed=embed)
         
         elif isinstance(error, commands.NotOwner):
