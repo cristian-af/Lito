@@ -22,8 +22,6 @@ class Random(commands.Cog):
     @commands.guild_only()
     async def random(self, ctx):
         """Chooses a random user."""
-        if ctx.author.bot:
-            return
         
         user = random.choice(ctx.guild.members)
         embed = discord.Embed(color=GREEN_EMBED)
@@ -40,9 +38,6 @@ class Random(commands.Cog):
     @commands.check(utils.checks.is_bot)
     async def dadjoke(self, ctx):
         """Says a dad joke."""
-        if ctx.author.bot:
-            return
-    
         try:
             headers = {"Accept": "application/json"}
             async with aiohttp.ClientSession() as session:
@@ -63,12 +58,21 @@ class Random(commands.Cog):
     @commands.check(utils.checks.is_bot)
     async def userinfo(self, ctx, member: discord.Member):
         """Shows information about the user."""
-        if ctx.author.bot:
-            return
+        status = member.status
+        if member.status == "online":
+            status = f"{status} - <:status_online:596576749790429200>"
+        if member.status == "idle":
+            status = f"{status} - <:status_idle:596576773488115722>"
+        if member.status == "dnd":
+            status = f"{status} -  <:status_dnd:596576774364856321>"
+        if member.status == "offline":
+            status = f"{status} - <:status_offline:596576752013279242> "
+        if member.status == "streaming":
+            status = f"{status} - <:status_streaming:596576747294818305>"
         
         embed = discord.Embed(color=GREEN_EMBED)
         embed.title = f"{member}"
-        embed.description = f"User ID: {member.id}\nBot: {member.bot}\nJoined: {humanize.naturaldate(member.joined_at)}\nCreated: {humanize.naturaldate(member.created_at)}"
+        embed.description = f"Status: {status}\nUser ID: ``{member.id}``\nBot: {member.bot}\nJoined: {humanize.naturaldate(member.joined_at)}\nCreated: {humanize.naturaldate(member.created_at)}\n```{member.activity}```"
         embed.set_footer(text=self.bot.user.name)
         embed.set_thumbnail(url=member.avatar_url)
         embed.timestamp = datetime.utcnow()
@@ -80,8 +84,6 @@ class Random(commands.Cog):
     @commands.check(utils.checks.is_bot)
     async def guildinfo(self, ctx):
         """Shows information about the server."""
-        if ctx.author.bot:
-            return
         
         embed = discord.Embed(color=GREEN_EMBED)
         embed.title = f"{ctx.guild.name} | {ctx.guild.id}"
