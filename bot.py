@@ -8,6 +8,7 @@ import codecs
 import pathlib
 
 from utils.settings import GREEN_EMBED, BOT_TOKEN, BOT_PREFIX
+import utils.checks
 from datetime import datetime
 from discord.ext.commands.cooldowns import BucketType
 description = "A test bot written in Python."
@@ -32,12 +33,10 @@ async def on_ready():
     await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=f"{BOT_PREFIX}help | {len(bot.users)} users."))
 
 @bot.command(name='stats')
+@commands.check(utils.checks.is_bot)
 @commands.cooldown(1,5,BucketType.user) 
 async def _stats(ctx):
-    """Shows the stats about the bot."""
-    if ctx.author.bot:
-            return
-
+    """Shows the stats about the bot. 5 second cooldown."""
     total = 0
     file_amount = 0
     for path, subdirs, files in os.walk('.'):
@@ -46,7 +45,7 @@ async def _stats(ctx):
                 file_amount += 1
                 with codecs.open('./' + str(pathlib.PurePath(path, name)), 'r', 'utf-8') as f:
                     for i, l in enumerate(f):
-                        if l.strip().startswith('#') or len(l.strip()) is 0:
+                        if l.strip().startswith('#') or len(l.strip()) == 0:
                             pass
                         else:
                             total += 1
