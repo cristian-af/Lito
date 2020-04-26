@@ -63,13 +63,13 @@ class Random(commands.Cog):
         if status == "online" or "<Status.online: 'online'>":
             status = f"{status} - <:status_online:596576749790429200>"
             pass
-        if status is status.idle:
+        if status == "idle" or "<Status.idle: 'idle'>":
             status = f"{status} - <:status_idle:596576773488115722>"
             pass
-        if status is status.dnd:
+        if status == "dnd" or "<Status.dnd: 'dnd'>":
             status = f"{status} -  <:status_dnd:596576774364856321>"
             pass
-        if status is status.offline:
+        if status == "offline" or "<Status.offline: 'offline'>":
             status = f"{status} - <:status_offline:596576752013279242> "
             pass
         
