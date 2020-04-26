@@ -37,14 +37,8 @@ class CommandErrorHandler(commands.Cog):
             
 
         elif isinstance(error, commands.CheckFailure):
-            test = "You do not own this bot."
-            if error is test:
                 embed = discord.Embed(color=GREEN_EMBED)
-                embed.description = f"<{ERROR_EMOJI}> I am sorry but you are not the owner of this bot."
-                return await ctx.send(embed=embed)
-            else:
-                embed = discord.Embed(color=GREEN_EMBED)
-                embed.description = f"<{ERROR_EMOJI}> Oh! I am sorry. {error}.. Maybe that means that you failed a check that prevents you from using it!"
+                embed.description = f"<{ERROR_EMOJI}> Oh! I am sorry, a check failed. `{error}`"
                 return await ctx.send(embed=embed)
 
         elif isinstance(error, commands.CommandInvokeError):
