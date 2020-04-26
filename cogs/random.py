@@ -58,9 +58,23 @@ class Random(commands.Cog):
     @commands.check(utils.checks.is_bot)
     async def userinfo(self, ctx, member: discord.Member):
         """Shows information about the user."""
+        status = member.status
+
+        if status == "online" or "<Status.online: 'online'>":
+            status = f"{status} - <:status_online:596576749790429200>"
+
+        if status == "idle" or "<Status.idle: 'idle'>":
+            status = f"{status} - <:status_idle:596576773488115722>"
+
+        if status == "dnd" or "<Status.dnd: 'dnd'>":
+            status = f"{status} -  <:status_dnd:596576774364856321>"
+            
+        if status == "offline" or "<Status.offline: 'offline'>":
+            status = f"{status} - <:status_offline:596576752013279242> "
+        
         embed = discord.Embed(color=GREEN_EMBED)
         embed.title = f"{member}"
-        embed.description = f"Status: {member.status}\nUser ID: ``{member.id}``\nBot: {member.bot}\nJoined: {humanize.naturaldate(member.joined_at)}\nCreated: {humanize.naturaldate(member.created_at)}\n```{member.activity}```"
+        embed.description = f"Status: {status}\nUser ID: ``{member.id}``\nBot: {member.bot}\nJoined: {humanize.naturaldate(member.joined_at)}\nCreated: {humanize.naturaldate(member.created_at)}\n```{member.activity}```"
         embed.set_footer(text=self.bot.user.name)
         embed.set_thumbnail(url=member.avatar_url)
         embed.timestamp = datetime.utcnow()
