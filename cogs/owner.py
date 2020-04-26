@@ -129,6 +129,7 @@ class Owner(commands.Cog):
         print(f'Cogs loaded: {len(self.bot.cogs)}')
         print('------')
         print(" ")
+        subprocess.run(["pyfiglet","Lito"])
         await ctx.message.add_reaction(f"{SUCCESS_EMOJI}")
         
     @commands.command(name='sql', hidden=False)
