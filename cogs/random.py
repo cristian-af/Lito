@@ -21,7 +21,7 @@ class Random(commands.Cog):
     @commands.check(utils.checks.is_bot)
     @commands.guild_only()
     async def random(self, ctx):
-        """Chooses a random user."""
+        """Chooses a random user. 5 second cooldown."""
         
         user = random.choice(ctx.guild.members)
         embed = discord.Embed(color=GREEN_EMBED)
@@ -33,11 +33,11 @@ class Random(commands.Cog):
         await ctx.send(embed=embed)
 
     @commands.command()
-    @commands.cooldown(1,5,BucketType.user)
+    @commands.cooldown(1,2,BucketType.user)
     @commands.guild_only()
     @commands.check(utils.checks.is_bot)
     async def dadjoke(self, ctx):
-        """Says a dad joke."""
+        """Says a dad joke. 2 second cooldown."""
         try:
             headers = {"Accept": "application/json"}
             async with aiohttp.ClientSession() as session:
@@ -57,7 +57,7 @@ class Random(commands.Cog):
     @commands.guild_only()
     @commands.check(utils.checks.is_bot)
     async def userinfo(self, ctx, member: discord.Member = None):
-        """Shows information about the user."""
+        """Shows information about the user. 5 second cooldown."""
         if member is None:
             member = ctx.author
         
@@ -74,7 +74,7 @@ class Random(commands.Cog):
     @commands.guild_only()
     @commands.check(utils.checks.is_bot)
     async def guildinfo(self, ctx):
-        """Shows information about the server."""
+        """Shows information about the server. 5 second cooldown."""
         
         embed = discord.Embed(color=GREEN_EMBED)
         embed.title = f"{ctx.guild.name} | {ctx.guild.id}"
@@ -85,11 +85,11 @@ class Random(commands.Cog):
         await ctx.send(embed=embed)
 
     @commands.command()
-    @commands.cooldown(1,60,BucketType.guild)
+    @commands.cooldown(1,35,BucketType.guild)
     @commands.guild_only()
     @commands.check(utils.checks.is_bot)
     async def feedback(self, ctx, *, text: str):
-        """A command that sends feedback."""
+        """A command that sends feedback. 35 second cooldown per guild."""
         embed = discord.Embed(color=GREEN_EMBED)
         embed.title = "Feedback"
         embed.description = f"A user named `{ctx.author.name}` sent a feedback that says:\n\n{text}"
@@ -102,9 +102,9 @@ class Random(commands.Cog):
     @commands.command()
     @commands.guild_only()
     @commands.check(utils.checks.is_bot)
-    @commands.cooldown(4.0, 3, commands.BucketType.user)
+    @commands.cooldown(4.0, 2, commands.BucketType.user)
     async def hownonce(self, ctx, user: discord.Member = None):
-        """How much of an nonce he is?"""
+        """How much of an nonce he is? 2 second cooldown with 4 tries until cooldown."""
         if user is None:
             user = ctx.author
             random.seed(user.id)
