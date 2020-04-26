@@ -102,7 +102,7 @@ class Random(commands.Cog):
     @commands.command()
     @commands.guild_only()
     @commands.check(utils.checks.is_bot)
-    @commands.cooldown(2.0, 5, commands.BucketType.user)
+    @commands.cooldown(4.0, 3, commands.BucketType.user)
     async def hownonce(self, ctx, user: discord.Member = None):
         """How much of an nonce he is?"""
         if user is None:
@@ -124,14 +124,6 @@ class Random(commands.Cog):
             embed.set_footer(text=f"{self.bot.user.name}")
             embed.timestamp = datetime.utcnow()
             await ctx.send(embed=embed)
-
-    @commands.command()
-    @commands.cooldown(1,60,BucketType.guild)
-    @commands.guild_only()
-    @commands.check(utils.checks.is_bot)
-    async def takethenoose(self, ctx):
-        """Just take the noose."""
-        await ctx.send("aight.")
 
 def setup(bot):
     bot.add_cog(Random(bot))
