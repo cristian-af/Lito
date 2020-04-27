@@ -6,10 +6,11 @@ LOGS = []
 DATABASE_CHANNEL_ID = 704422443808325730
 
 
-class MyBot(commands.Bot):
+class Database(commands.Cog):
 
-    def __init__(self):
+    def __init__(self, bot):
         self.discordDB = DiscordDB(self, DATABASE_CHANNEL_ID)
+        self.bot = bot
 
     @commands.command()
     async def log(self, ctx, *, text):
@@ -26,7 +27,5 @@ class MyBot(commands.Bot):
             data = await self.discordDB.get(_id)
             await ctx.send(f"Name: {data.name}, Text: {data.text}")
 
-
-bot = MyBot()
 def setup(bot):
     bot.add_cog(MyBot(bot))
