@@ -9,7 +9,6 @@ DATABASE_CHANNEL_ID = 704422443808325730
 class MyBot(commands.Bot):
 
     def __init__(self):
-        super().__init__(command_prefix="!")
         self.discordDB = DiscordDB(self, DATABASE_CHANNEL_ID)
 
     @commands.command()
@@ -30,4 +29,4 @@ class MyBot(commands.Bot):
 
 bot = MyBot()
 def setup(bot):
-    bot.add_cog(Random(bot))
+    bot.add_cog(MyBot(bot))
