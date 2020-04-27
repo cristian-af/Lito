@@ -10,7 +10,7 @@ DATABASE_CHANNEL_ID = 704422443808325730
 class MyBot(commands.Bot):
 
     def __init__(self):
-        super().__init__(command_prefix="!")
+        super().__init__(command_prefix="lito ")
         self.discordDB = DiscordDB(self, DATABASE_CHANNEL_ID)
 
     @commands.command()
