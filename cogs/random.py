@@ -107,9 +107,9 @@ class Random(commands.Cog):
     @commands.cooldown(1,35,BucketType.guild)
     @commands.is_owner()
     @commands.check(utils.checks.is_bot)
-    async def feedbackdm(self, ctx, *, text: str, user = discord.Member):
+    async def feedbackdm(self, ctx, *, text: str, member: discord.Member = None):
         """DMs a user.. Owner only."""
-        test = self.bot.get_user(user.id)               
+        test = self.bot.get_user(member.id)               
         await test.send(text)
     
     @commands.command()
