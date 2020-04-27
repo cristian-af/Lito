@@ -23,6 +23,25 @@ class MyBot(commands.Bot):
     def __init__(self):
         super().__init__(description=description, command_prefix=commands.when_mentioned_or(BOT_PREFIX))
         self.discordDB = DiscordDB(self, DATABASE_CHANNEL_ID)
+        if __name__ == "__main__":
+    
+    for extension in startup_extensions:
+        try:
+            super().__init__.load_extension(extension)
+            print(" ")
+            print('Logged in as:')
+            print('------')
+            print(f'Username: {self.bot.user.name}')
+            print(f'ID: {self.bot.user.id}')
+            print(f'Active on: {len(self.bot.guilds)} Servers.')
+            print(f'Users: {len(self.bot.users)}')
+            print(f'Cogs loaded: {len(self.bot.cogs)}')
+            print('------')
+            print(" ")
+            subprocess.run(["pyfiglet","Lito"])
+        except Exception as e:
+            exc = '{}: {}'.format(type(e).__name__, e)
+            print('Failed to load extension {}\n{}'.format(extension, exc))
 
     @commands.command()
     @commands.is_owner()
@@ -72,23 +91,5 @@ class MyBot(commands.Bot):
      
 
 bot = MyBot()
-if __name__ == "__main__":
-    for extension in startup_extensions:
-        try:
-            self.bot.load_extension(extension)
-            print(" ")
-            print('Logged in as:')
-            print('------')
-            print(f'Username: {self.bot.user.name}')
-            print(f'ID: {self.bot.user.id}')
-            print(f'Active on: {len(self.bot.guilds)} Servers.')
-            print(f'Users: {len(self.bot.users)}')
-            print(f'Cogs loaded: {len(self.bot.cogs)}')
-            print('------')
-            print(" ")
-            subprocess.run(["pyfiglet","Lito"])
-        except Exception as e:
-            exc = '{}: {}'.format(type(e).__name__, e)
-            print('Failed to load extension {}\n{}'.format(extension, exc))
 bot.launch_time = datetime.utcnow()
 bot.run(BOT_TOKEN)
