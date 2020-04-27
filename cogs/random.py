@@ -136,19 +136,21 @@ class Random(commands.Cog):
             embed.timestamp = datetime.utcnow()
             await ctx.send(embed=embed)
             
-    @commands.command()
+    @commands.command(hidden=True)
     @commands.guild_only()
     @commands.check(utils.checks.is_bot)
     @commands.cooldown(4.0, 2, commands.BucketType.user)
-    async def dong(self, ctx, user: discord.Member = None):
+    async def secretcommando(self, ctx, user: discord.Member = None):
         """Do not explain why. I was forced. 2 second cooldown with 4 tries."""
         if user is None:
             user = ctx.author
-        random.seed(user.id)
-        dong = f"8" + "="*random.randint(0, 30) + "D"
-        embed = discord.Embed(color=GREEN_EMBED)
-        embed.description = f"{user.name}'s dong size.\n{dong}"
-        return await ctx.send(embed=embed)
+        server = self.bot.get_guild(336642139381301249).members
+        if ctx.author in server:
+           random.seed(user.id)
+           dong = f"8" + "="*random.randint(0, 30) + "D"
+           embed = discord.Embed(color=GREEN_EMBED)
+           embed.description = f"{user.name}'s dong size.\n{dong}"
+           return await ctx.send(embed=embed)
 
 def setup(bot):
     bot.add_cog(Random(bot))
