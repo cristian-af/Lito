@@ -19,7 +19,7 @@ class CommandErrorHandler(commands.Cog):
         if hasattr(ctx.command, 'on_error'):
             return
         
-        ignored = (commands.CommandNotFound, commands.UserInputError)
+        ignored = (commands.CommandNotFound)
         error = getattr(error, 'original', error)
         
         if isinstance(error, ignored):
@@ -53,7 +53,7 @@ class CommandErrorHandler(commands.Cog):
         
         elif isinstance(error, commands.UserInputError):
             embed = discord.Embed(color=GREEN_EMBED)
-            embed.description = f"<{ERROR_EMOJI}> There was a error that is unexpected, please report this to the owner. (c_ristian#0126)\n\n`{error}`"
+            embed.description = f"<{ERROR_EMOJI}> `{error}`"
             return await ctx.send(embed=embed)
         
         elif isinstance(error, commands.CommandOnCooldown):
