@@ -23,7 +23,7 @@ class MyBot(commands.Bot):
     def __init__(self):
         super().__init__(description=description, command_prefix=commands.when_mentioned_or(BOT_PREFIX))
         self.discordDB = DiscordDB(self, DATABASE_CHANNEL_ID)
-        if __name__ == "__main__":
+        
     
     @commands.command()
     @commands.is_owner()
@@ -71,7 +71,8 @@ class MyBot(commands.Bot):
         embed.timestamp = datetime.utcnow()
         await ctx.send(embed=embed)
             
-    for extension in startup_extensions:
+    if __name__ == "__main__":
+     for extension in startup_extensions:
         try:
             super().__init__.load_extension(extension)
             print(" ")
@@ -85,7 +86,7 @@ class MyBot(commands.Bot):
             print('------')
             print(" ")
             subprocess.run(["pyfiglet","Lito"])
-    except Exception as e:
+     except Exception as e:
             exc = '{}: {}'.format(type(e).__name__, e)
             print('Failed to load extension {}\n{}'.format(extension, exc))
      
