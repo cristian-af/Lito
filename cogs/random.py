@@ -147,19 +147,8 @@ class Random(commands.Cog):
             random.seed(user.id)
             dong = f"8" + "="*random.randint(0, 30) + "D"
             embed = discord.Embed(color=GREEN_EMBED)
-            embed.title = "Your dong size."
-            embed.description = dong
-            embed.set_footer(text=self.bot.user.name)
-            embed.timestamp = datetime.utcnow()
-            await ctx.send(embed=embed)
-        else:
-            random.seed(user.id)
-            dong = f"8" + "="*random.randint(0, 30) + "D"
-            embed = discord.Embed(color=GREEN_EMBED)
             embed.title = f"{user.name}'s dong size."
             embed.description = dong
-            embed.set_footer(text=self.bot.user.name)
-            embed.timestamp = datetime.utcnow()
             await ctx.send(embed=embed)
 
 def setup(bot):
