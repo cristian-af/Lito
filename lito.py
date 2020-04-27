@@ -84,7 +84,6 @@ if __name__ == "__main__":
             print('------')
             print(" ")
             subprocess.run(["pyfiglet","Lito"])
-            await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=f"{BOT_PREFIX}help | {len(bot.users)} users."))
         except Exception as e:
             exc = '{}: {}'.format(type(e).__name__, e)
             print('Failed to load extension {}\n{}'.format(extension, exc))
