@@ -134,7 +134,7 @@ class Owner(commands.Cog):
         
     @commands.command(name='sql', hidden=False)
     @commands.is_owner()
-    async def _sql(ctx, *, text: str):
+    async def _sql(self, ctx, *, text: str):
        """Executes some SQL."""
        conn = await SQL.connect('database/test.db')
        db = await conn.cursor()
