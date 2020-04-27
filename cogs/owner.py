@@ -137,8 +137,10 @@ class Owner(commands.Cog):
     async def _sql(ctx, *, text: str):
        """Executes some SQL."""
        conn = await SQL.connect('database/test.db')
-       c = await conn.cursor()
-       await c.execute(text)
+       db = await conn.cursor()
+       yes = await db.execute(text)
+       await yes.fetchone()
+       await yes.fetchall()
        await ctx.send("Done!")
 
 def setup(bot):
