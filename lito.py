@@ -74,7 +74,7 @@ class MyBot(commands.Bot):
     if __name__ == "__main__":
       for extension in startup_extensions:
          try:
-            super().__init__.load_extension(extension)
+            commands.Bot.load_extension(extension)
             print(" ")
             print('Logged in as:')
             print('------')
