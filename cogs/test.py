@@ -13,6 +13,7 @@ class Database(commands.Cog):
         self.bot = bot
 
     @commands.command()
+    @commands.is_owner()
     async def log(self, ctx, *, text):
         data = {
             "name": ctx.author,
@@ -22,10 +23,11 @@ class Database(commands.Cog):
         LOGS.append(_id)
 
     @commands.command()
+    @commands.is_owner()
     async def show_logs(self, ctx):
         for _id in LOGS:
             data = await self.discordDB.get(_id)
             await ctx.send(f"Name: {data.name}, Text: {data.text}")
 
 def setup(bot):
-    bot.add_cog(MyBot(bot))
+    bot.add_cog(Database(bot))
