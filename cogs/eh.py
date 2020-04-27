@@ -6,7 +6,7 @@ import discord
 import humanize
 import datetime
 
-ERROR_EMOJI = "<:bloberror:704367819688771614>"
+ERROR_EMOJI = ":bloberror:704367819688771614"
 
 class CommandErrorHandler(commands.Cog):
     def __init__(self, bot):
