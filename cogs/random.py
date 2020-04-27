@@ -91,7 +91,7 @@ class Random(commands.Cog):
         """A command that sends feedback to the owner. 35 second cooldown per guild."""
         embed = discord.Embed(color=GREEN_EMBED)
         embed.title = "Feedback"
-        embed.description = f"A user named `{ctx.author}` from `{ctx.guild}` sent a feedback that says:\n\n```{text}```"
+        embed.description = f"A user named `{ctx.author}` with the id `{ctx.author.id}` from `{ctx.guild}` sent a feedback that says:\n\n```{text}```"
         embed.set_footer(text=self.bot.user.name)
         embed.set_thumbnail(url=ctx.author.avatar_url)
         embed.timestamp = datetime.utcnow()
@@ -101,6 +101,16 @@ class Random(commands.Cog):
         response.description = "I highly appreciate the feedback that is sent to make a suggestion or a bug report or just feedback on how good the bot is! Thank you!"
         response.set_footer(text=self.bot.user.name)                           
         await ctx.send(embed=response)
+    
+    
+    @commands.command()
+    @commands.cooldown(1,35,BucketType.guild)
+    @commands.is_owner()
+    @commands.check(utils.checks.is_bot)
+    async def feedbackdm(self, ctx, *, text: str, user = discord.Member):
+        """DMs a user.. Owner only."""
+        test = self.bot.get_user(user.id)               
+        await test.send(text)
     
     @commands.command()
     @commands.guild_only()
