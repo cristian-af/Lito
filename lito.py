@@ -72,8 +72,8 @@ class MyBot(commands.Bot):
         await ctx.send(embed=embed)
             
     if __name__ == "__main__":
-     for extension in startup_extensions:
-        try:
+      for extension in startup_extensions:
+         try:
             super().__init__.load_extension(extension)
             print(" ")
             print('Logged in as:')
@@ -86,7 +86,7 @@ class MyBot(commands.Bot):
             print('------')
             print(" ")
             subprocess.run(["pyfiglet","Lito"])
-     except Exception as e:
+         except Exception as e:
             exc = '{}: {}'.format(type(e).__name__, e)
             print('Failed to load extension {}\n{}'.format(extension, exc))
      
