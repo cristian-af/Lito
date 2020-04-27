@@ -74,7 +74,7 @@ class MyBot(commands.Bot):
     if __name__ == "__main__":
       for extension in startup_extensions:
          try:
-            commands.Bot.load_extension(extension)
+            commands.Bot.load_extension('jishaku')
             print(" ")
             print('Logged in as:')
             print('------')
