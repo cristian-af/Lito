@@ -149,7 +149,7 @@ class Random(commands.Cog):
             embed = discord.Embed(color=GREEN_EMBED)
             embed.title = "Your dong size."
             embed.description = dong
-            embed.set_footer(text=f"{self.bot.user.name}")
+            embed.set_footer(text=self.bot.user.name)
             embed.timestamp = datetime.utcnow()
             await ctx.send(embed=embed)
         else:
@@ -158,7 +158,7 @@ class Random(commands.Cog):
             embed = discord.Embed(color=GREEN_EMBED)
             embed.title = f"{user.name}'s dong size."
             embed.description = dong
-            embed.set_footer(text=f"{self.bot.user.name}")
+            embed.set_footer(text=self.bot.user.name)
             embed.timestamp = datetime.utcnow()
             await ctx.send(embed=embed)
 
