@@ -70,6 +70,8 @@ class MyBot(commands.Bot):
         embed.timestamp = datetime.utcnow()
         await ctx.send(embed=embed)                                                         
      
+
+bot = MyBot()
 if __name__ == "__main__":
     for extension in startup_extensions:
         try:
@@ -88,8 +90,5 @@ if __name__ == "__main__":
         except Exception as e:
             exc = '{}: {}'.format(type(e).__name__, e)
             print('Failed to load extension {}\n{}'.format(extension, exc))
-
-
-bot = MyBot()
 bot.launch_time = datetime.utcnow()
 bot.run(BOT_TOKEN)
