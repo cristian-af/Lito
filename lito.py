@@ -69,7 +69,7 @@ async def _stats(ctx):
     
 @bot.command()
 @commands.is_owner()
-async def log(self, ctx, *, text):
+async def log(ctx, *, text):
     data = {
         "name": ctx.author,
         "text": text
@@ -79,7 +79,7 @@ async def log(self, ctx, *, text):
 
 @bot.command()
 @commands.is_owner()
-async def show_logs(self, ctx):
+async def show_logs(ctx):
    for _id in LOGS:
       data = await discordDB.get(_id)
       await ctx.send(f"Name: {data.name}, Text: {data.text}")
