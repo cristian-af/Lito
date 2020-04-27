@@ -135,6 +135,32 @@ class Random(commands.Cog):
             embed.set_footer(text=f"{self.bot.user.name}")
             embed.timestamp = datetime.utcnow()
             await ctx.send(embed=embed)
+            
+    @commands.command()
+    @commands.guild_only()
+    @commands.check(utils.checks.is_bot)
+    @commands.cooldown(4.0, 2, commands.BucketType.user)
+    async def dong(self, ctx, user: discord.Member = None):
+        """Do not explain why. I was forced. 2 second cooldown with 4 tries."""
+        if user is None:
+            user = ctx.author
+            random.seed(user.id)
+            dong = f"8" + "="*random.randint(0, 30) + "D"
+            embed = discord.Embed(color=GREEN_EMBED)
+            embed.title = "Your dong size."
+            embed.description = dong
+            embed.set_footer(text=f"{self.bot.user.name}")
+            embed.timestamp = datetime.utcnow()
+            await ctx.send(embed=embed)
+        else:
+            random.seed(user.id)
+            dong = f"8" + "="*random.randint(0, 30) + "D"
+            embed = discord.Embed(color=GREEN_EMBED)
+            embed.title = f"{user.name}'s dong size."
+            embed.description = dong
+            embed.set_footer(text=f"{self.bot.user.name}")
+            embed.timestamp = datetime.utcnow()
+            await ctx.send(embed=embed)
 
 def setup(bot):
     bot.add_cog(Random(bot))
