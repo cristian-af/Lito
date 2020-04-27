@@ -16,6 +16,7 @@ description = "A android discord.py bot running on Termux."
 
 LOGS = []
 DATABASE_CHANNEL_ID = 704422443808325730
+startup_extensions = ['cogs.owner','cogs.webhook','cogs.random','cogs.eh','jishaku']
 
 class MyBot(commands.Bot):
 
@@ -90,4 +91,5 @@ if __name__ == "__main__":
 
 
 bot = MyBot()
+bot.launch_time = datetime.utcnow()
 bot.run(BOT_TOKEN)
