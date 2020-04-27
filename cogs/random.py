@@ -91,7 +91,7 @@ class Random(commands.Cog):
         """A command that sends feedback to the owner. 150 second cooldown"""
         embed = discord.Embed(color=GREEN_EMBED)
         embed.title = "Feedback"
-        embed.description = f"A user named `{ctx.author}` with the id `{ctx.author.id}` from `{ctx.guild}` sent a feedback that says:\n\n```{text}```"
+        embed.description = f"A user named `{ctx.author}` with the id `{ctx.author.id}` from `{ctx.guild}` sent feedback that says:\n\n```{text}```"
         embed.set_footer(text=self.bot.user.name)
         embed.set_thumbnail(url=ctx.author.avatar_url)
         embed.timestamp = datetime.utcnow()
