@@ -1,3 +1,8 @@
+# This cog is from a bot named KiwiBot#5890 owned by Eugene#3778
+# Go check out Kiwi. https://github.com/Fogapod/KiwiBot
+# Credits go to Eugene#3778.
+
+
 import discord
 from discord.ext import commands
 
@@ -46,3 +51,7 @@ class Webhook(commands.Cog):
 
 def setup(bot):
     bot.add_cog(Webhook(bot))
+
+# This cog is from a bot named KiwiBot#5890 owned by Eugene#3778
+# Go check out Kiwi. https://github.com/Fogapod/KiwiBot
+# Credits go to Eugene#3778.
