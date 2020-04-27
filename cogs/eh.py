@@ -1,12 +1,10 @@
 import traceback
 import sys
 from discord.ext import commands
-from utils.settings import GREEN_EMBED
+from utils.settings import GREEN_EMBED, ERROR_EMOJI
 import discord
 import humanize
 import datetime
-
-ERROR_EMOJI = ":bloberror:704367819688771614"
 
 class CommandErrorHandler(commands.Cog):
     def __init__(self, bot):
