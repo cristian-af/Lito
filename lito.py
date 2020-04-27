@@ -25,24 +25,6 @@ class MyBot(commands.Bot):
         self.discordDB = DiscordDB(self, DATABASE_CHANNEL_ID)
         if __name__ == "__main__":
     
-    for extension in startup_extensions:
-        try:
-            super().__init__.load_extension(extension)
-            print(" ")
-            print('Logged in as:')
-            print('------')
-            print(f'Username: {self.bot.user.name}')
-            print(f'ID: {self.bot.user.id}')
-            print(f'Active on: {len(self.bot.guilds)} Servers.')
-            print(f'Users: {len(self.bot.users)}')
-            print(f'Cogs loaded: {len(self.bot.cogs)}')
-            print('------')
-            print(" ")
-            subprocess.run(["pyfiglet","Lito"])
-        except Exception as e:
-            exc = '{}: {}'.format(type(e).__name__, e)
-            print('Failed to load extension {}\n{}'.format(extension, exc))
-
     @commands.command()
     @commands.is_owner()
     async def log(self, ctx, *, text):
@@ -87,7 +69,25 @@ class MyBot(commands.Bot):
         embed.set_footer(text=bot.user.name)
         embed.set_thumbnail(url=bot.user.avatar_url)
         embed.timestamp = datetime.utcnow()
-        await ctx.send(embed=embed)                                                         
+        await ctx.send(embed=embed)
+            
+    for extension in startup_extensions:
+        try:
+            super().__init__.load_extension(extension)
+            print(" ")
+            print('Logged in as:')
+            print('------')
+            print(f'Username: {self.bot.user.name}')
+            print(f'ID: {self.bot.user.id}')
+            print(f'Active on: {len(self.bot.guilds)} Servers.')
+            print(f'Users: {len(self.bot.users)}')
+            print(f'Cogs loaded: {len(self.bot.cogs)}')
+            print('------')
+            print(" ")
+            subprocess.run(["pyfiglet","Lito"])
+    except Exception as e:
+            exc = '{}: {}'.format(type(e).__name__, e)
+            print('Failed to load extension {}\n{}'.format(extension, exc))
      
 
 bot = MyBot()
