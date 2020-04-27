@@ -71,7 +71,7 @@ async def _stats(ctx):
 @commands.is_owner()
 async def log(ctx, *, text):
     data = {
-        "name": ctx.author,
+        "name": ctx.author.name,
         "text": text
     }
     _id = await discordDB.set(data)
