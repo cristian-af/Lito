@@ -24,6 +24,7 @@ class MyBot(commands.Bot):
         self.discordDB = DiscordDB(self, DATABASE_CHANNEL_ID)
 
     @commands.command()
+    @commands.is_owner()
     async def log(self, ctx, *, text):
         data = {
             "name": ctx.author,
@@ -56,17 +57,17 @@ class MyBot(commands.Bot):
                             else:
                                  total += 1
 
-    delta_uptime = datetime.utcnow() - bot.launch_time
-    hours, remainder = divmod(int(delta_uptime.total_seconds()), 3600)
-    minutes, seconds = divmod(remainder, 60)
-    days, hours = divmod(hours, 24)
-    embed = discord.Embed(color=GREEN_EMBED)
-    embed.title = "Stats"
-    embed.description = f"\nPython Version: {platform.python_version()}\ndiscord.py version: {pkg_resources.get_distribution('discord.py').version}\nUsers: {len(bot.users)}\nPing latency: {round(bot.latency * 1000)}ms\nOwner: {bot.get_user(339752841612623872)}\nUptime: {days}d, {hours}h, {minutes}m, {seconds}s\nServers: {len(bot.guilds)}\nLine count: {total:,} lines and {file_amount:,} files.\nCPU Percent: {psutil.cpu_percent()}%\nMemory: {psutil.virtual_memory().percent}MiB"
-    embed.set_footer(text=bot.user.name)
-    embed.set_thumbnail(url=bot.user.avatar_url)
-    embed.timestamp = datetime.utcnow()
-    await ctx.send(embed=embed)                                                         
+        delta_uptime = datetime.utcnow() - bot.launch_time
+        hours, remainder = divmod(int(delta_uptime.total_seconds()), 3600)
+        minutes, seconds = divmod(remainder, 60)
+        days, hours = divmod(hours, 24)
+        embed = discord.Embed(color=GREEN_EMBED)
+        embed.title = "Stats"
+        embed.description = f"\nPython Version: {platform.python_version()}\ndiscord.py version: {pkg_resources.get_distribution('discord.py').version}\nUsers: {len(bot.users)}\nPing latency: {round(bot.latency * 1000)}ms\nOwner: {bot.get_user(339752841612623872)}\nUptime: {days}d, {hours}h, {minutes}m, {seconds}s\nServers: {len(bot.guilds)}\nLine count: {total:,} lines and {file_amount:,} files.\nCPU Percent: {psutil.cpu_percent()}%\nMemory: {psutil.virtual_memory().percent}MiB"
+        embed.set_footer(text=bot.user.name)
+        embed.set_thumbnail(url=bot.user.avatar_url)
+        embed.timestamp = datetime.utcnow()
+        await ctx.send(embed=embed)                                                         
      
 if __name__ == "__main__":
     for extension in startup_extensions:
