@@ -84,11 +84,11 @@ class Random(commands.Cog):
         await ctx.send(embed=embed)
 
     @commands.command()
-    @commands.cooldown(1,35,BucketType.guild)
+    @commands.cooldown(1,150,BucketType.user)
     @commands.guild_only()
     @commands.check(utils.checks.is_bot)
     async def feedback(self, ctx, *, text: str):
-        """A command that sends feedback to the owner. 35 second cooldown per guild."""
+        """A command that sends feedback to the owner. 150 second cooldown"""
         embed = discord.Embed(color=GREEN_EMBED)
         embed.title = "Feedback"
         embed.description = f"A user named `{ctx.author}` with the id `{ctx.author.id}` from `{ctx.guild}` sent a feedback that says:\n\n```{text}```"
