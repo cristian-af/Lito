@@ -147,8 +147,7 @@ class Random(commands.Cog):
             random.seed(user.id)
             dong = f"8" + "="*random.randint(0, 30) + "D"
             embed = discord.Embed(color=GREEN_EMBED)
-            embed.title = f"{user.name}'s dong size."
-            embed.description = dong
+            embed.description = f"{user.name}'s dong size.\n{dong}"
             await ctx.send(embed=embed)
 
 def setup(bot):
