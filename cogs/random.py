@@ -105,7 +105,7 @@ class Random(commands.Cog):
     
     @commands.command()
     @commands.is_owner()
-    async def dm(self, ctx, *, text: str, member: discord.Member = None):
+    async def dm(self, ctx, member: discord.Member = None, *, text: str):
         """DMs a user.. Owner only."""
         test = self.bot.get_user(member)               
         await test.send(text)
