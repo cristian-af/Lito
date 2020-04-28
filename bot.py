@@ -32,7 +32,7 @@ async def on_ready():
     subprocess.run(["pyfiglet","Lito"])
     await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=f"{BOT_PREFIX}help | {len(bot.users)} users."))
 
-@bot.command(name='stats')
+@bot.command(name='stats', aliases=["info"])
 @commands.check(utils.checks.is_bot)
 @commands.cooldown(1,5,BucketType.user) 
 async def _stats(ctx):
@@ -51,13 +51,15 @@ async def _stats(ctx):
                             total += 1
 
     delta_uptime = datetime.utcnow() - bot.launch_time
+    owner = bot.get_user(339752841612623872)
     hours, remainder = divmod(int(delta_uptime.total_seconds()), 3600)
     minutes, seconds = divmod(remainder, 60)
     days, hours = divmod(hours, 24)
     embed = discord.Embed(color=GREEN_EMBED)
     embed.title = "Stats"
-    embed.description = f"\nPython Version: {platform.python_version()}\ndiscord.py version: {pkg_resources.get_distribution('discord.py').version}\nUsers: {len(bot.users)}\nPing latency: {round(bot.latency * 1000)}ms\nOwner: {bot.get_user(339752841612623872)}\nUptime: {days}d, {hours}h, {minutes}m, {seconds}s\nServers: {len(bot.guilds)}\nLine count: {total:,} lines and {file_amount:,} files.\nCPU Percent: {psutil.cpu_percent()}%\nMemory: {psutil.virtual_memory().percent}MiB"
-    embed.set_footer(text=f"{bot.user.name}")
+    embed.add_field(name=owner, value=f"Status: {owner.status}\nUser ID: {owner.id}\nAccount created: {humanize.naturaldate(owner.created_at)}\n\n{owner.activity})
+    embed.description = f"\nPython Version: {platform.python_version()}\ndiscord.py version: {pkg_resources.get_distribution('discord.py').version}\nUsers: {len(bot.users)}\nPing latency: {round(bot.latency * 1000)}ms\nUptime: {days}d, {hours}h, {minutes}m, {seconds}s\nServers: {len(bot.guilds)}\nLine count: {total:,} lines and {file_amount:,} files.\nCPU Percent: {psutil.cpu_percent()}%\nMemory: {psutil.virtual_memory().percent}MiB"
+    embed.set_footer(text=bot.user.name)
     embed.set_thumbnail(url=bot.user.avatar_url)
     embed.timestamp = datetime.utcnow()
     await ctx.send(embed=embed)                                                         
