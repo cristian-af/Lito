@@ -16,7 +16,7 @@ class Database(commands.Cog):
     @commands.is_owner()
     async def log(self, ctx, *, text):
         data = {
-            "name": ctx.author,
+            "name": ctx.author.name,
             "text": text
         }
         _id = await self.discordDB.set(data)
