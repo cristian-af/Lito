@@ -9,7 +9,7 @@ DATABASE_CHANNEL_ID = 704422443808325730
 class Database(commands.Cog):
 
     def __init__(self, bot):
-        self.discordDB = DiscordDB(self, DATABASE_CHANNEL_ID)
+        self.discordDB = DiscordDB(bot, DATABASE_CHANNEL_ID)
         self.bot = bot
 
     @commands.command()
