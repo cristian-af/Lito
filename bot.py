@@ -4,7 +4,7 @@ from discord.ext import commands
 import asyncio
 import os
 import platform, pkg_resources, subprocess, pyfiglet, psutil
-import codecs
+import codecs, humanize
 import pathlib
 
 from utils.settings import GREEN_EMBED, BOT_TOKEN, BOT_PREFIX
