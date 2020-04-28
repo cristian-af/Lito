@@ -57,7 +57,7 @@ async def _stats(ctx):
     days, hours = divmod(hours, 24)
     embed = discord.Embed(color=GREEN_EMBED)
     embed.title = "Stats"
-    embed.add_field(name=owner, value=f"Status: {owner.status}\nUser ID: {owner.id}\nAccount created: {humanize.naturaldate(owner.created_at)}\n\n{owner.activity})
+    embed.add_field(name=owner, value=f"Status: {owner.status}\nUser ID: {owner.id}\nAccount created: {humanize.naturaldate(owner.created_at)}\n\n{owner.activity}", inline=True)
     embed.description = f"\nPython Version: {platform.python_version()}\ndiscord.py version: {pkg_resources.get_distribution('discord.py').version}\nUsers: {len(bot.users)}\nPing latency: {round(bot.latency * 1000)}ms\nUptime: {days}d, {hours}h, {minutes}m, {seconds}s\nServers: {len(bot.guilds)}\nLine count: {total:,} lines and {file_amount:,} files.\nCPU Percent: {psutil.cpu_percent()}%\nMemory: {psutil.virtual_memory().percent}MiB"
     embed.set_footer(text=bot.user.name)
     embed.set_thumbnail(url=bot.user.avatar_url)
