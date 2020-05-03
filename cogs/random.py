@@ -101,15 +101,7 @@ class Random(commands.Cog):
         response.description = "I highly appreciate the feedback that is sent to make a suggestion or a bug report or just feedback on how good the bot is! Thank you!"
         response.set_footer(text=self.bot.user.name)                           
         await ctx.send(embed=response)
-    
-    
-    @commands.command()
-    @commands.is_owner()
-    async def dm(self, ctx, member: discord.Member = None, *, text: str):
-        """DMs a user.. Owner only."""
-        user = self.bot.get_user(member.id)               
-        await user.send(text)
-    
+     
     @commands.command()
     @commands.guild_only()
     @commands.check(utils.checks.is_bot)
@@ -118,39 +110,12 @@ class Random(commands.Cog):
         """How much of an nonce he is? 2 second cooldown with 4 tries."""
         if user is None:
             user = ctx.author
-            random.seed(user.id)
-            percent = random.randint(0, 100)
-            embed = discord.Embed(color=GREEN_EMBED)
-            embed.title = "How much of a nonce are you?"
-            embed.description = f"You are {percent}% nonce."
-            embed.set_footer(text=f"{self.bot.user.name}")
-            embed.timestamp = datetime.utcnow()
-            await ctx.send(embed=embed)
-        else:
-            random.seed(user.id)
-            percent = random.randint(0, 100)
-            embed = discord.Embed(color=GREEN_EMBED)
-            embed.title = f"How much of an nonce is {user.name}?"
-            embed.description = f"{user.mention} is {percent}% nonce."
-            embed.set_footer(text=f"{self.bot.user.name}")
-            embed.timestamp = datetime.utcnow()
-            await ctx.send(embed=embed)
+        random.seed(user.id)
+        percent = random.randint(0, 100)
+        embed = discord.Embed(color=GREEN_EMBED)
+        embed.title = f"How much of an nonce is {user.name}?"
+        embed.description = f"{user.mention} is {percent}% nonce."
+        await ctx.send(embed=embed)
             
-    @commands.command(hidden=True)
-    @commands.guild_only()
-    @commands.check(utils.checks.is_bot)
-    @commands.cooldown(4.0, 2, commands.BucketType.user)
-    async def secretcommando(self, ctx, user: discord.Member = None):
-        """Do not explain why. I was forced. 2 second cooldown with 4 tries."""
-        if user is None:
-            user = ctx.author
-        server = self.bot.get_guild(336642139381301249).members
-        if ctx.author in server:
-           random.seed(user.id)
-           dong = f"8" + "="*random.randint(0, 30) + "D"
-           embed = discord.Embed(color=GREEN_EMBED)
-           embed.description = f"{user.name}'s dong size.\n{dong}"
-           return await ctx.send(embed=embed)
-
 def setup(bot):
     bot.add_cog(Random(bot))
