@@ -146,6 +146,13 @@ class Owner(commands.Cog):
        await yes.fetchone()
        await yes.fetchall()
        await ctx.send("Done!")
+              
+    @commands.command()
+    @commands.is_owner()
+    async def dm(self, ctx, member: discord.Member = None, *, text: str):
+        """DMs a user.. Owner only."""
+        user = self.bot.get_user(member.id)               
+        await user.send(text)
 
 def setup(bot):
     bot.add_cog(Owner(bot))
