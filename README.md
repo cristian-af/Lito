@@ -22,6 +22,7 @@ The current commands for Lito (those who are curious) is:
   - random:       `Chooses a random user. 5 second cooldown.`
   - userinfo:     `Shows information about the user. 5 second cooldown.`
   - stats/info: `Shows the stats about the bot. 5 second cooldown.`
+  - source: `Sends the source link to Lito.`
 
 ## Another notice
 
