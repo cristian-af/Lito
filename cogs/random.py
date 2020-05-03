@@ -124,6 +124,21 @@ class Random(commands.Cog):
     async def source(self, ctx):
         """Sends the source link to Lito."""
         await ctx.send("https://github.com/Cristy86/Lito")
+        
+        
+    @commands.command()
+    @commands.guild_only()
+    @commands.check(utils.checks.is_bot)
+    @commands.cooldown(4.0, 2, commands.BucketType.user)
+    async def dong(self, ctx, user: discord.Member = None):
+        """Do not explain why. I was forced. 2 second cooldown with 4 tries."""
+        if user is None:
+            user = ctx.author
+        random.seed(user.id)
+        dong = f"8" + "="*random.randint(0, 30) + "D"
+        embed = discord.Embed(color=GREEN_EMBED)
+        embed.description = f"{user.name}'s dong size.\n{dong}"
+        return await ctx.send(embed=embed)
             
 def setup(bot):
     bot.add_cog(Random(bot))
