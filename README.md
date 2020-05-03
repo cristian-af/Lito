@@ -21,6 +21,7 @@ The current commands for Lito (those who are curious) is:
   - hownonce:     `How much of an nonce he is? 2 second cooldown with 4 tries.`
   - random:       `Chooses a random user. 5 second cooldown.`
   - userinfo:     `Shows information about the user. 5 second cooldown.`
+  - stats/info: `Shows the stats about the bot. 5 second cooldown.`
 
 ## Another notice
 
