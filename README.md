@@ -26,3 +26,5 @@ The current commands for Lito (those who are curious) is:
 ## Another notice
 
    - **Some things are from their rightful owners, do not question me about them. They will receive the credits in the files in this github repo.**
+
+   - If you want to send feedback, join [discord.py]( https://discord.gg/dpy), or make a pull request. ***yes.***
