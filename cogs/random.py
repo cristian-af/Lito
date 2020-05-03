@@ -19,6 +19,7 @@ class Random(commands.Cog):
     @commands.command()
     @commands.cooldown(1,5,BucketType.user)
     @commands.check(utils.checks.is_bot)
+    @commands.check(utils.checks.is_pop)
     @commands.guild_only()
     async def random(self, ctx):
         """Chooses a random user. 5 second cooldown."""
@@ -36,6 +37,7 @@ class Random(commands.Cog):
     @commands.cooldown(1,2,BucketType.user)
     @commands.guild_only()
     @commands.check(utils.checks.is_bot)
+    @commands.check(utils.checks.is_pop)
     async def dadjoke(self, ctx):
         """Says a dad joke. 2 second cooldown."""
         try:
@@ -56,6 +58,7 @@ class Random(commands.Cog):
     @commands.cooldown(1,5,BucketType.user)
     @commands.guild_only()
     @commands.check(utils.checks.is_bot)
+    @commands.check(utils.checks.is_pop)
     async def userinfo(self, ctx, member: discord.Member = None):
         """Shows information about the user. 5 second cooldown."""
         if member is None:
@@ -73,6 +76,7 @@ class Random(commands.Cog):
     @commands.cooldown(1,5,BucketType.user)
     @commands.guild_only()
     @commands.check(utils.checks.is_bot)
+    @commands.check(utils.checks.is_pop)
     async def guildinfo(self, ctx):
         """Shows information about the server. 5 second cooldown."""
         
@@ -87,6 +91,7 @@ class Random(commands.Cog):
     @commands.cooldown(1,150,BucketType.user)
     @commands.guild_only()
     @commands.check(utils.checks.is_bot)
+    @commands.check(utils.checks.is_pop)
     async def feedback(self, ctx, *, text: str):
         """A command that sends feedback to the owner. 150 second cooldown"""
         embed = discord.Embed(color=GREEN_EMBED)
@@ -105,6 +110,7 @@ class Random(commands.Cog):
     @commands.command()
     @commands.guild_only()
     @commands.check(utils.checks.is_bot)
+    @commands.check(utils.checks.is_pop)
     @commands.cooldown(4.0, 2, commands.BucketType.user)
     async def hownonce(self, ctx, user: discord.Member = None):
         """How much of an nonce he is? 2 second cooldown with 4 tries."""
@@ -120,6 +126,7 @@ class Random(commands.Cog):
     @commands.command()
     @commands.guild_only()
     @commands.check(utils.checks.is_bot)
+    @commands.check(utils.checks.is_pop)
     @commands.cooldown(1, 2, commands.BucketType.user)
     async def source(self, ctx):
         """Sends the source link to Lito."""
@@ -129,6 +136,7 @@ class Random(commands.Cog):
     @commands.command()
     @commands.guild_only()
     @commands.check(utils.checks.is_bot)
+    @commands.check(utils.checks.is_pop)
     @commands.cooldown(4.0, 2, commands.BucketType.user)
     async def dong(self, ctx, user: discord.Member = None):
         """Do not explain why. I was forced. 2 second cooldown with 4 tries."""
