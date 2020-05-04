@@ -29,4 +29,4 @@ The current commands for Lito (those who are curious) is:
 
    - **Some things are from their rightful owners, do not question me about them. They will receive the credits in the files in this github repo.**
 
-   - If you want to send feedback, join [discord.py]( https://discord.gg/dpy) go to #testing and say `lito [your suggestion]`, or make a pull request. ***yes.***
+   - If you want to send feedback, join [discord.py]( https://discord.gg/dpy) go to #testing and say `lito feedback [your suggestion]`, or make a pull request. ***yes.***
