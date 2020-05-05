@@ -1,6 +1,8 @@
 ## Notice
 
-- **I am not allowing people to just take my code without any notice and no reason. I am allowing people to take my code if they want only if they have my little permission if so. But I am actually putting my time on those things and you cannot just take all my code because you want to. I am only giving you a command or a bit of code for help but that's all.**
+   - **Some things are from their rightful owners, do not question me about them. They will receive the credits in the files in this github repo.**
+
+   - If you want to send feedback, join [discord.py]( https://discord.gg/dpy) go to #testing and say `lito feedback [your suggestion]`, or make a pull request. ***yes.***
 
 
 - **If you need to contact me, this is my discord: c_ristian#0126**
@@ -26,8 +28,3 @@ The current commands for Lito (those who are curious) is:
   - source: `Sends the source link to Lito.`
   - dong: `Do not explain why. I was forced. 2 second cooldown with 4 tries.`
 
-## Another notice
-
-   - **Some things are from their rightful owners, do not question me about them. They will receive the credits in the files in this github repo.**
-
-   - If you want to send feedback, join [discord.py]( https://discord.gg/dpy) go to #testing and say `lito feedback [your suggestion]`, or make a pull request. ***yes.***
