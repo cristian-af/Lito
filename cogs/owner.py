@@ -15,7 +15,7 @@ from platform import python_version
 import copy
 import os
 from utils.settings import GREEN_EMBED, ERROR_EMOJI, SUCCESS_EMOJI, LOADING_EMOJI
-import time, subprocess, SQL
+import time, subprocess
 from typing import Union
 
 class Owner(commands.Cog):
@@ -126,27 +126,22 @@ class Owner(commands.Cog):
         print(f'Active on: {len(self.bot.guilds)} Servers.')
         print(f'Users: {len(self.bot.users)}')
         print(f'Cogs loaded: {len(self.bot.cogs)}')
-        print(f"OS version: {self.platform.system()}{platform.release()}")
-        print(f"Python Version: {self.platform.python_version()}")
-        print(f"discord.py version: {self.pkg_resources.get_distribution('discord.py').version}")
+        print(f"OS version: {platform.system()}{platform.release()}")
+        print(f"Python Version: {platform.python_version()}")
+        print(f"discord.py version: {pkg_resources.get_distribution('discord.py').version}")
         print('------')
-        print(" ")
         subprocess.run(["pyfiglet","Lito"])
-        print(" ")
         print('------')
         await ctx.message.add_reaction(f"{SUCCESS_EMOJI}")
         
-    @commands.command(name='sql', hidden=False)
-    @commands.is_owner()
-    async def _sql(self, ctx, *, text: str):
-       """Executes some SQL."""
-       conn = await SQL.connect('database/test.db')
-       db = await conn.cursor()
-       yes = await db.execute(text)
-       await yes.fetchone()
-       await yes.fetchall()
-       await ctx.send("Done!")
               
+    @commands.command()
+    @commands.is_owner()
+    async def dm(self, ctx, member: discord.Member = None, *, text: str):
+        """DMs a user.. Owner only."""
+        user = self.bot.get_user(member.id)               
+        await user.send(text)
+
     @commands.command()
     @commands.is_owner()
     async def dm(self, ctx, member: discord.Member = None, *, text: str):
