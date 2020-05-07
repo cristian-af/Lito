@@ -131,7 +131,7 @@ class Random(commands.Cog):
     @commands.check(utils.checks.is_bot)
     @commands.cooldown(4.0, 2, commands.BucketType.user)
     async def dong(self, ctx, user: discord.Member = None):
-        """Do not explain why. I was forced. 2 second cooldown with 4 tries."""
+        """yes. 2 second cooldown with 4 tries."""
         if user is None:
             user = ctx.author
         random.seed(user.id)
