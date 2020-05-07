@@ -11,7 +11,7 @@ from utils.settings import GREEN_EMBED, BOT_TOKEN, BOT_PREFIX
 import utils.checks
 from datetime import datetime
 from discord.ext.commands.cooldowns import BucketType
-description = "A android discord.py bot running on Termux."
+description = "your mom."
 
 bot = commands.Bot(description=description, command_prefix=commands.when_mentioned_or(BOT_PREFIX))
 bot.launch_time = datetime.utcnow()
