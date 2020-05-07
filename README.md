@@ -26,5 +26,5 @@ The current commands for Lito (those who are curious) is:
   - userinfo:     `Shows information about the user. 5 second cooldown.`
   - stats/info: `Shows the stats about the bot. 5 second cooldown.`
   - source: `Sends the source link to Lito.`
-  - dong: `Do not explain why. I was forced. 2 second cooldown with 4 tries.`
+  - dong: `yes. 2 second cooldown with 4 tries.`
 
