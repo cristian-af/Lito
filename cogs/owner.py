@@ -11,7 +11,7 @@ import aiohttp
 import datetime
 from collections import Counter
 
-import platform
+import platform, pkg_resources
 
 import copy
 import os
