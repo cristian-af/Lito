@@ -13,8 +13,8 @@
 
 <img align=right height=125 src=.github/f5a3d8aa3d1ee5333c23b0416c7e52ca.png>
 
-Hi there! I am a personal bot on a 7 android Huawei that runs on Termux which is a app on android.
-There is no invite link, so don't bother to search for one. I am sorry.
+I am a personal bot on a 7 android Huawei that runs on Termux which is a app on android.
+There is no invite link, so don't bother to search for one.
 
 Lito has no many commands so there won't be much things to look in this github repo.
 The current commands for Lito (those who are curious) is:
