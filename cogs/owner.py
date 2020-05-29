@@ -11,7 +11,8 @@ import aiohttp
 import datetime
 from collections import Counter
 
-from platform import python_version
+import platform
+
 import copy
 import os
 from utils.settings import GREEN_EMBED, ERROR_EMOJI, SUCCESS_EMOJI, LOADING_EMOJI
