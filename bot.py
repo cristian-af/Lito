@@ -54,7 +54,7 @@ async def _stats(ctx):
                         else:
                             total += 1
     test = "Termux"
-    if platform.platform == "Linux-3.10.65+-aarch64-with-glibc2.17":
+    if platform.platform() == "Linux-3.10.65+-aarch64-with-glibc2.17":
           test = "Arch Linux ARM aarch64"
     else:
           test = "Termux"
