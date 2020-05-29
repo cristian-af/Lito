@@ -13,7 +13,13 @@ from datetime import datetime
 from discord.ext.commands.cooldowns import BucketType
 description = "I am a personal bot on a 7 android Huawei/android 5 Lenovo that runs on Termux which is a app on android.\nThere is no invite link, so don't bother to search for one, just no. If you want to check the source just use the command [source]."
 
-bot = commands.Bot(description=description, command_prefix=commands.when_mentioned_or(BOT_PREFIX))
+def get_prefix(bot, message):
+    prefixes = ['Lito ', 'lito ', 'LITO ']
+
+    return commands.when_mentioned_or(*prefixes)(bot, message)
+
+
+bot = commands.Bot(description=description, command_prefix=get_prefix)
 bot.launch_time = datetime.utcnow()
 startup_extensions = ['cogs.owner','cogs.webhook','cogs.random','cogs.eh','jishaku']
 
