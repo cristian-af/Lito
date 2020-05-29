@@ -54,7 +54,7 @@ async def _stats(ctx):
                         else:
                             total += 1
     test = "Termux"
-    if platform.platform = "Linux-3.10.65+-aarch64-with-glibc2.17":
+    if platform.platform == "Linux-3.10.65+-aarch64-with-glibc2.17":
           test = "Arch Linux ARM aarch64"
     delta_uptime = datetime.utcnow() - bot.launch_time
     owner = bot.get_user(339752841612623872)
