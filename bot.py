@@ -11,7 +11,7 @@ from utils.settings import GREEN_EMBED, BOT_TOKEN, BOT_PREFIX
 import utils.checks
 from datetime import datetime
 from discord.ext.commands.cooldowns import BucketType
-description = "I am a personal bot on a 7 android Huawei/android 5 Lenovo that runs on Termux which is a app on android.\n\nThere is no invite link, so don't bother to search for one, just no. If you want to check the source just use the command [source]."
+description = "I am a personal bot on a 7 android Huawei/android 5 Lenovo that runs on Termux which is a app on android.\nThere is no invite link, so don't bother to search for one, just no. If you want to check the source just use the command [source]."
 
 bot = commands.Bot(description=description, command_prefix=commands.when_mentioned_or(BOT_PREFIX))
 bot.launch_time = datetime.utcnow()
@@ -31,6 +31,7 @@ async def on_ready():
     print(f"Python Version: {platform.python_version()}")
     print(f"discord.py version: {pkg_resources.get_distribution('discord.py').version}")
     print('------')
+    print(' ')
     subprocess.run(["pyfiglet","Lito"])
     print('------')
     await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=f"{BOT_PREFIX}help | {len(bot.users)} users."))
