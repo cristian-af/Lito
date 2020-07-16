@@ -25,21 +25,11 @@ startup_extensions = ['cogs.owner','cogs.webhook','cogs.random','cogs.eh','jisha
 
 @bot.event
 async def on_ready():
-    print(" ")
-    print('Logged in as:')
-    print('------')
-    print(f'Username: {bot.user.name}')
-    print(f'ID: {bot.user.id}')
-    print(f'Active on: {len(bot.guilds)} Servers.')
-    print(f'Users: {len(bot.users)}')
-    print(f'Cogs loaded: {len(bot.cogs)}')
-    print(f"OS version: {platform.system()}{platform.release()}")
-    print(f"Python Version: {platform.python_version()}")
-    print(f"discord.py version: {pkg_resources.get_distribution('discord.py').version}")
-    print('------')
-    print(' ')
     subprocess.run(["pyfiglet","Lito"])
-    print('------')
+    print(" ")
+    print(f'Logged in as {bot.user.name} (ID {bot.user.id}), {bot.user.name} is in {len(bot.guilds)} servers and sees {len(bot.users)} users. {len(bot.cogs)} cogs loaded, running on discord.py version {pkg_resources.get_distribution('discord.py').version}.')
+    print(f'Python version is {platform.python_version()} and running on {platform.system()}{platform.release()}.')
+          
     await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=f"{BOT_PREFIX}help | {len(bot.users)} users."))
 
 @bot.command(name='stats', aliases=["info"])
@@ -59,11 +49,7 @@ async def _stats(ctx):
                             pass
                         else:
                             total += 1
-    test = "Termux"
-    if platform.platform() == "Linux-3.10.65+-aarch64-with-glibc2.17":
-          test = "Arch Linux ARM aarch64"
-    else:
-          test = "Termux"
+          
     delta_uptime = datetime.utcnow() - bot.launch_time
     owner = bot.get_user(339752841612623872)
     hours, remainder = divmod(int(delta_uptime.total_seconds()), 3600)
