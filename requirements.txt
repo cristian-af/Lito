@@ -2,5 +2,6 @@
 -e git+https://github.com/thec0sm0s/DiscordDB
 aiohttp
 websockets
+pyfiglet
 psutil
 -e git+https://github.com/Gorialis/jishaku@master#egg=jishaku
