@@ -27,10 +27,13 @@ class Owner(commands.Cog):
         self._last_result = None
         self.sessions = set()
         self.blocked = []
+       
+    async def cog_check(self, ctx):
+        if not await self.bot.is_owner(ctx.author):
+            raise commands.NotOwner("You are not allowed to use this command.")
+        return True
 
     @commands.command(name='load', hidden=False)
-    @commands.guild_only()
-    @commands.is_owner()
     async def _load(self, ctx, *, extension_name):
         """Loads a module."""
         try:
@@ -44,8 +47,6 @@ class Owner(commands.Cog):
             await ctx.send(f"```py\n{type(e).__name__}: {e}\n```")
 
     @commands.command(name='unload', hidden=False)
-    @commands.guild_only()
-    @commands.is_owner()
     async def _unload(self, ctx, *, extension_name):
         """Unloads a module."""
         try:
@@ -59,8 +60,6 @@ class Owner(commands.Cog):
             await ctx.send(f"```py\n{type(e).__name__}: {e}\n```")
 
     @commands.command(name='reload', hidden=False)
-    @commands.guild_only()
-    @commands.is_owner()
     async def _reload(self, ctx, *, extension_name):
         """Reloads a module."""
         try:
@@ -74,40 +73,32 @@ class Owner(commands.Cog):
             await ctx.message.add_reaction(f"{ERROR_EMOJI}")
             await ctx.send(f"```py\n{type(e).__name__}: {e}\n```")
     
-    @commands.guild_only()
-    @commands.is_owner()
+
     @commands.group(hidden=True, name="activity")
     async def _activity(self, ctx):
         """A command that changes status playing and more."""
         if ctx.invoked_subcommand is None:
             await ctx.send(f'Incorrect block subcommand passed.')
 
-    @commands.guild_only()
-    @commands.is_owner()
     @_activity.command()
     async def playing(self, ctx, *, activity: str):
         """Sets playing status in silent."""
         await self.bot.change_presence(activity=discord.Game(name=activity))
         await ctx.message.add_reaction(SUCCESS_EMOJI)
 
-    @commands.guild_only()
-    @commands.is_owner()
+
     @_activity.command()
     async def watching(self, ctx, *, activity: str):
         """Sets watching status in silent."""
         await self.bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=activity))
         await ctx.message.add_reaction(SUCCESS_EMOJI)
-
-    @commands.guild_only()
-    @commands.is_owner()
+    
     @_activity.command()
     async def listening(self, ctx, *, activity: str):
         """Sets listening status in silent."""
         await self.bot.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name=activity))
         await ctx.message.add_reaction(SUCCESS_EMOJI)
 
-    @commands.guild_only()
-    @commands.is_owner()
     @_activity.command()
     async def streaming(self, ctx, url: str, *, activity: str):
         """Sets streaming status in silent."""
@@ -115,7 +106,6 @@ class Owner(commands.Cog):
         await ctx.message.add_reaction(SUCCESS_EMOJI)
 
     @commands.command(pass_context=True, aliases=["clc"])
-    @commands.is_owner()
     async def clearconsole(self, ctx):
         """Cleans up the console."""
         subprocess.run("clear")
@@ -137,18 +127,10 @@ class Owner(commands.Cog):
         
               
     @commands.command()
-    @commands.is_owner()
     async def dm(self, ctx, member: discord.Member = None, *, text: str):
-        """DMs a user.. Owner only."""
         user = self.bot.get_user(member.id)               
         await user.send(text)
 
-    @commands.command()
-    @commands.is_owner()
-    async def dm(self, ctx, member: discord.Member = None, *, text: str):
-        """DMs a user.. Owner only."""
-        user = self.bot.get_user(member.id)               
-        await user.send(text)
 
 def setup(bot):
     bot.add_cog(Owner(bot))
