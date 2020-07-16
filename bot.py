@@ -27,7 +27,8 @@ startup_extensions = ['cogs.owner','cogs.webhook','cogs.random','cogs.eh','jisha
 async def on_ready():
     subprocess.run(["pyfiglet","Lito"])
     print(" ")
-    print(f"Logged in as {bot.user.name} (ID {bot.user.id}), {bot.user.name} is in {len(bot.guilds)} servers and sees {len(bot.users)} users. {len(bot.cogs)} cogs loaded, running on discord.py version {pkg_resources.get_distribution('discord.py').version}.")
+    print(f"Logged in as {bot.user.name} (ID {bot.user.id}), {bot.user.name} is in {len(bot.guilds)} servers and sees {len(bot.users)} users.")
+    print(f"{len(bot.cogs)} cogs loaded, running on discord.py version {pkg_resources.get_distribution('discord.py').version}.")
     print(f"Python version is {platform.python_version()} and running on {platform.system()}{platform.release()}.")
           
     await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=f"{BOT_PREFIX}help | {len(bot.users)} users."))
