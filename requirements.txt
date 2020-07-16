@@ -1,5 +1,5 @@
 -e git+https://github.com/Rapptz/discord.py@master#egg=discord.py
--e git+https://github.com/thec0sm0s/DiscordDB
+-e git+https://github.com/thec0sm0s/DiscordDB@master#egg=DiscordDB
 aiohttp
 websockets
 pyfiglet
