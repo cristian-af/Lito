@@ -20,7 +20,7 @@ class Random(commands.Cog):
     @commands.command(aliases=["info"])
     @commands.check(utils.checks.is_bot)
     @commands.cooldown(1,5,BucketType.user) 
-    async def stats(ctx):
+    async def stats(self, ctx):
      """Shows the stats about the bot. 5 second cooldown."""
      rasp_temp = os.popen("vcgencmd measure_temp").readline()
      total = 0
