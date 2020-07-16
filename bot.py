@@ -38,6 +38,7 @@ async def on_ready():
 @commands.cooldown(1,5,BucketType.user) 
 async def _stats(ctx):
     """Shows the stats about the bot. 5 second cooldown."""
+    rasp_temp = os.popen("vcgencmd measure_temp").readline()
     total = 0
     file_amount = 0
     for path, subdirs, files in os.walk('.'):
@@ -58,8 +59,7 @@ async def _stats(ctx):
     days, hours = divmod(hours, 24)
     embed = discord.Embed(color=GREEN_EMBED)
     embed.title = "Stats"
-    embed.add_field(name=f"Owned by {owner}", value=f"User ID: `{owner.id}`\nAccount created: `{humanize.naturaldate(owner.created_at)}`", inline=True)
-    embed.description = f"OS kernel: `{platform.system()} {platform.release()}`\nOS booted since: `{datetime.fromtimestamp(psutil.boot_time()).strftime('%Y-%m-%d %H:%M:%S')}`\nPython Version: `{platform.python_version()}`\ndiscord.py version: `{pkg_resources.get_distribution('discord.py').version}`\n\nUsers: `{len(bot.users)}`\nPing latency: `{round(bot.latency * 1000)}ms`\n\nUptime: `{days}d, {hours}h, {minutes}m, {seconds}s`\nServers: `{len(bot.guilds)}`\nLine count: `{total:,} lines and {file_amount:,} files.`\n\nCPU Usage: `{psutil.cpu_percent()}%`\nVirtual Memory: `{humanize.naturalsize(psutil.virtual_memory().used)} ({psutil.virtual_memory().percent}%)`\nSwap memory: `{humanize.naturalsize(psutil.swap_memory().used)} - ({psutil.swap_memory().percent}%)`"
+    embed.description = f"OS kernel: `{platform.system()} {platform.release()}`\nOS booted since: `{datetime.fromtimestamp(psutil.boot_time()).strftime('%Y-%m-%d %H:%M:%S')}`\nPython Version: `{platform.python_version()}`\ndiscord.py version: `{pkg_resources.get_distribution('discord.py').version}`\n\nUsers: `{len(bot.users)}`\nPing latency: `{round(bot.latency * 1000)}ms`\n\nUptime: `{days}d, {hours}h, {minutes}m, {seconds}s`\nServers: `{len(bot.guilds)}`\nLine count: `{total:,} lines and {file_amount:,} files.`\n\nCPU Usage: `{psutil.cpu_percent()}%`\nCPU Temp: {rasp_temp.replace("temp=","")}\nVirtual Memory: `{humanize.naturalsize(psutil.virtual_memory().used)} ({psutil.virtual_memory().percent}%)`\nSwap memory: `{humanize.naturalsize(psutil.swap_memory().used)} - ({psutil.swap_memory().percent}%)`"
     embed.set_footer(text=bot.user.name)
     embed.set_thumbnail(url=bot.user.avatar_url)
     embed.timestamp = datetime.utcnow()
