@@ -21,7 +21,7 @@ class Random(commands.Cog):
     @commands.check(utils.checks.is_bot)
     @commands.cooldown(1,5,BucketType.user) 
     async def stats(ctx):
-    """Shows the stats about the bot. 5 second cooldown."""
+     """Shows the stats about the bot. 5 second cooldown."""
      rasp_temp = os.popen("vcgencmd measure_temp").readline()
      total = 0
      file_amount = 0
