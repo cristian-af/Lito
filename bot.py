@@ -3,7 +3,8 @@ from discord.ext import commands
 
 import asyncio
 import os
-import platform, pkg_resources, subprocess, pyfiglet
+import platform, pkg_resources
+from pyfiglet import Figlet
 import codecs, humanize
 
 from utils.settings import BOT_TOKEN, BOT_PREFIX
@@ -29,7 +30,7 @@ async def on_ready():
     print(f"Logged in as {bot.user.name} (ID {bot.user.id}), {bot.user.name} is in {len(bot.guilds)} servers and sees {len(bot.users)} users.")
     print(f"{len(bot.cogs)} cogs loaded, running on discord.py version {pkg_resources.get_distribution('discord.py').version}.")
     print(f"Python version is {platform.python_version()} and running on {platform.system()}{platform.release()}.")
-    print pyfiglet.Figlet(font="big").renderText("Lito")
+    print Figlet(font="big").renderText("Lito")
 
           
     await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=f"{BOT_PREFIX}help | {len(bot.users)} users."))
