@@ -5,7 +5,6 @@
    - If you want to send feedback, join [discord.py]( https://discord.gg/dpy) go to #testing and say `lito feedback [your suggestion]`, or make a pull request. ***yes.***
 
 
-- **If you need to contact me, this is my discord: c_ristian#0126**
 
 
 
