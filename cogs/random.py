@@ -35,14 +35,19 @@ class Random(commands.Cog):
                              pass
                          else:
                              total += 1
-          
+     asciitext = """\n 
+█░░ █ ▀█▀ █▀█ ░
+█▄▄ █ ░█░ █▄█ ▄
+
+▄▀█   █▀ █░░ █▀█ █░█░█   █▀█ █▀█ █▀█ ░░█ █▀▀ █▀▀ ▀█▀ ░
+█▀█   ▄█ █▄▄ █▄█ ▀▄▀▄▀   █▀▀ █▀▄ █▄█ █▄█ ██▄ █▄▄ ░█░ ▄"""     
      delta_uptime = datetime.utcnow() - self.bot.launch_time
      hours, remainder = divmod(int(delta_uptime.total_seconds()), 3600)
      minutes, seconds = divmod(remainder, 60)
      days, hours = divmod(hours, 24)
      embed = discord.Embed(color=GREEN_EMBED)
      embed.title = "Stats"
-     embed.description = f"OS kernel: `{platform.system()} {platform.release()}`\nOS booted since: `{datetime.fromtimestamp(psutil.boot_time()).strftime('%Y-%m-%d %H:%M:%S')}`\nPython Version: `{platform.python_version()}`\ndiscord.py version: `{pkg_resources.get_distribution('discord.py').version}`\n\nUsers: `{len(self.bot.users)}`\nPing latency: `{round(self.bot.latency * 1000)}ms`\n\nUptime: `{days}d, {hours}h, {minutes}m, {seconds}s`\nServers: `{len(self.bot.guilds)}`\nLine count: `{total:,} lines and {file_amount:,} files.`\n\nCPU Usage: `{psutil.cpu_percent()}%`\nCPU Temp: `{rasp_temp.replace('temp=','')}`\nVirtual Memory: `{humanize.naturalsize(psutil.virtual_memory().used)} ({psutil.virtual_memory().percent}%)`\nSwap memory: `{humanize.naturalsize(psutil.swap_memory().used)} - ({psutil.swap_memory().percent}%)`"
+     embed.description = f"CPU Usage: `{psutil.cpu_percent()}%`\nCPU Temp: `{rasp_temp.replace('temp=','')}`\nVirtual Memory: `{humanize.naturalsize(psutil.virtual_memory().used)} ({psutil.virtual_memory().percent}%)`\nSwap memory: `{humanize.naturalsize(psutil.swap_memory().used)} - ({psutil.swap_memory().percent}%)`\nThis is where the CPU & Memory will be.\n\nUsers: `{len(_bot.users)}`\nPing latency: `{round(_bot.latency * 1000)}ms`\nUptime: `{days}d, {hours}h, {minutes}m, {seconds}s`\nServers: `{len(_bot.guilds)}`\nLine count: `{total:,} lines and {file_amount:,} files.`\nThis is where Uptime along with Users & Servers will be.\n\nOS kernel: `{platform.system()} {platform.release()}`\nOS booted since: `{datetime.fromtimestamp(psutil.boot_time()).strftime('%Y-%m-%d %H:%M:%S')}`\nPython Version: `{platform.python_version()}`\ndiscord.py version: `{pkg_resources.get_distribution('discord.py').version}`\n\n```{asciitext}```"
      embed.set_footer(text=self.bot.user.name)
      embed.set_thumbnail(url=self.bot.user.avatar_url)
      embed.timestamp = datetime.utcnow()
