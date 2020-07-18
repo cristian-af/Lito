@@ -36,10 +36,8 @@ class Random(commands.Cog):
                          else:
                              total += 1
      asciitext = """\n
-█░░ █ ▀█▀ █▀█ ░
-█▄▄ █ ░█░ █▄█ ▄
-▄▀█   █▀ █▀▄▀█ ▄▀█ █░░ █░░   █▀█ █▀█ █▀█ ░░█ █▀▀ █▀▀ ▀█▀ ░
-█▀█   ▄█ █░▀░█ █▀█ █▄▄ █▄▄   █▀▀ █▀▄ █▄█ █▄█ ██▄ █▄▄ ░█░ ▄"""     
+█░░ █ ▀█▀ █▀█ ░   ▄▀█   █▀ █▀▄▀█ ▄▀█ █░░ █░░   █▀█ █▀█ █▀█ ░░█ █▀▀ █▀▀ ▀█▀ ░
+█▄▄ █ ░█░ █▄█ ▄   █▀█   ▄█ █░▀░█ █▀█ █▄▄ █▄▄   █▀▀ █▀▄ █▄█ █▄█ ██▄ █▄▄ ░█░ ▄"""     
      delta_uptime = datetime.utcnow() - self.bot.launch_time
      hours, remainder = divmod(int(delta_uptime.total_seconds()), 3600)
      minutes, seconds = divmod(remainder, 60)
