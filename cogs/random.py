@@ -39,9 +39,11 @@ class Random(commands.Cog):
 █░░ █ ▀█▀ █▀█ ░  
 █▄▄ █ ░█░ █▄█ ▄  
 
+▄▀█   █▀ █▀▄▀█ ▄▀█ █░░ █░░
+█▀█   ▄█ █░▀░█ █▀█ █▄▄ █▄▄
 
-▄▀█   █▀ █▀▄▀█ ▄▀█ █░░ █░░   █▀█ █▀█ █▀█ ░░█ █▀▀ █▀▀ ▀█▀ ░
-█▀█   ▄█ █░▀░█ █▀█ █▄▄ █▄▄   █▀▀ █▀▄ █▄█ █▄█ ██▄ █▄▄ ░█░ ▄"""     
+█▀█ █▀█ █▀█ ░░█ █▀▀ █▀▀ ▀█▀ ░
+█▀▀ █▀▄ █▄█ █▄█ ██▄ █▄▄ ░█░ ▄"""     
      delta_uptime = datetime.utcnow() - self.bot.launch_time
      hours, remainder = divmod(int(delta_uptime.total_seconds()), 3600)
      minutes, seconds = divmod(remainder, 60)
