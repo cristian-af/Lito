@@ -38,7 +38,6 @@ class Random(commands.Cog):
      asciitext = """\n
 █░░ █ ▀█▀ █▀█ ░
 █▄▄ █ ░█░ █▄█ ▄
-
 ▄▀█   █▀ █▀▄▀█ ▄▀█ █░░ █░░   █▀█ █▀█ █▀█ ░░█ █▀▀ █▀▀ ▀█▀ ░
 █▀█   ▄█ █░▀░█ █▀█ █▄▄ █▄▄   █▀▀ █▀▄ █▄█ █▄█ ██▄ █▄▄ ░█░ ▄"""     
      delta_uptime = datetime.utcnow() - self.bot.launch_time
