@@ -157,14 +157,6 @@ class Random(commands.Cog):
         embed.description = f"{user.mention} is {percent}% nonce."
         await ctx.send(embed=embed)
     
-    @commands.command()
-    @commands.guild_only()
-    @commands.check(utils.checks.is_bot)
-    @commands.cooldown(1, 2, commands.BucketType.user)
-    async def source(self, ctx):
-        """Sends the source link to Lito."""
-        await ctx.send("https://github.com/Cristy86/Lito")
-        
         
     @commands.command()
     @commands.guild_only()
