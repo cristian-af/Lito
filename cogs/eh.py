@@ -84,6 +84,7 @@ class CommandErrorHandler(commands.Cog):
                 pass
                 
         print('Ignoring exception in command {}:'.format(ctx.command), file=sys.stderr)
+        await self.bot.get_user(734340927375540254).send(f"```py\n{type(error).__name__}: {error}\n```")
         traceback.print_exception(type(error), error, error.__traceback__, file=sys.stderr)
 
 def setup(bot):
