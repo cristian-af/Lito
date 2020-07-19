@@ -32,7 +32,7 @@ class CommandErrorHandler(commands.Cog):
 
         elif isinstance(error, commands.BadArgument):
             embed = discord.Embed(color=GREEN_EMBED)
-            embed.description = f"<{ERROR_EMOJI}> There was a error that is unexpected, please report this to the owner. (c_ristian#0126)\n\n`{error}`"
+            embed.description = f"<{ERROR_EMOJI}> There was a error that is unexpected, please report this to the owner. ({self.bot.get_user(339752841612623872)})\n\n`{error}`"
             return await ctx.send(embed=embed)
             
 
@@ -43,12 +43,12 @@ class CommandErrorHandler(commands.Cog):
 
         elif isinstance(error, commands.CommandInvokeError):
             embed = discord.Embed(color=GREEN_EMBED)
-            embed.description = f"<{ERROR_EMOJI}> There was a error that is unexpected, please report this to the owner. (c_ristian#0126)\n\n`{error}`"
+            embed.description = f"<{ERROR_EMOJI}> There was a error that is unexpected, please report this to the owner. ({self.bot.get_user(339752841612623872)})\n\n`{error}`"
             return await ctx.send(embed=embed)
 
         elif isinstance(error, commands.TooManyArguments):
             embed = discord.Embed(color=GREEN_EMBED)
-            embed.description = f"<{ERROR_EMOJI}> There was a error that is unexpected, please report this to the owner. (c_ristian#0126)\n\n`{error}`"
+            embed.description = f"<{ERROR_EMOJI}> There was a error that is unexpected, please report this to the owner. ({self.bot.get_user(339752841612623872)})\n\n`{error}`"
             return await ctx.send(embed=embed)
         
         elif isinstance(error, commands.UserInputError):
@@ -84,7 +84,7 @@ class CommandErrorHandler(commands.Cog):
                 pass
                 
         print('Ignoring exception in command {}:'.format(ctx.command), file=sys.stderr)
-        await self.bot.get_user(734340927375540254).send(f"```py\n{type(error).__name__}: {error}\n```")
+        await self.bot.get_user(339752841612623872).send(f"```py\n{type(error).__name__}: {error}\n```")
         traceback.print_exception(type(error), error, error.__traceback__, file=sys.stderr)
 
 def setup(bot):
