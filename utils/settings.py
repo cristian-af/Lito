@@ -9,7 +9,6 @@ BLUSERS = []
 
 BOT_TOKEN = ""
 
-BOT_PREFIX = "lito "
 
 from discord import Colour
 GREEN_EMBED2 = 0x3a4eff
