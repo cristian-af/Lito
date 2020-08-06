@@ -6,7 +6,7 @@ import os
 import platform, pkg_resources, pyfiglet
 import codecs, humanize
 
-from utils.settings import BOT_TOKEN, BOT_PREFIX
+from utils.settings import BOT_TOKEN
 import utils.checks
 from datetime import datetime
 from discord.ext.commands.cooldowns import BucketType
