@@ -5,7 +5,7 @@
 ## Notice
 
    - **Some things are from their rightful owners, do not question me about them. They will receive the credits in the files in this github repo.**
-
+   - Lito is **discontinued**.
 
 
 
@@ -15,7 +15,7 @@
 
 <img align=right height=125 src=.github/f5a3d8aa3d1ee5333c23b0416c7e52ca.png>
 
-Lito is just a bot that still is being worked on since 2019. This is a small project that I made.
+Lito is a bot that is **DISCONTINUED.** It was a small project I made in 2019.
 
 Lito has no many commands so there won't be much things to look in this github repo.
 The current commands for Lito (those who are curious) is:
