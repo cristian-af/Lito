@@ -1,3 +1,5 @@
+[![forthebadge](https://forthebadge.com/images/badges/it-works-why.svg)](https://forthebadge.com) [![forthebadge](https://forthebadge.com/images/badges/made-with-python.svg)](https://forthebadge.com) [![forthebadge](https://forthebadge.com/images/badges/you-didnt-ask-for-this.svg)](https://forthebadge.com)
+
 ## Notice
 
    - **Some things are from their rightful owners, do not question me about them. They will receive the credits in the files in this github repo.**
